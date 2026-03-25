@@ -588,8 +588,9 @@ nav.scrolled .nav-logo img { height: 34px; }
 /* ── ПЛАВАЮЩАЯ КНОПКА ── */
 .floating-cta {
   position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
-  z-index: 900; display: none;
+  z-index: 900; display: none; opacity: 0; transition: opacity 0.4s ease;
 }
+.floating-cta.show { opacity: 1; }
 .floating-cta a {
   display: flex; align-items: center; gap: 0.5rem;
   background: var(--yellow); color: var(--black);
@@ -635,7 +636,23 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
   .pricing-card { padding: 2rem 1.5rem !important; }
   .p-val { font-size: 2.2rem !important; }
   .p-name { font-size: 1.2rem !important; }
-  .floating-cta { display: block; }
+  /* Сокращаем отступы между секциями на мобильных */
+  .about, .schedule, .pricing, .trainers, .gallery, .certificates, .testimonials, .blog, .faq, .contact { padding: 3.5rem 0 !important; }
+  section[style*="padding:7rem"], .inbody-section { padding: 3.5rem 0 !important; }
+  .hero { min-height: 90vh !important; padding: 5rem 0 2rem !important; }
+  .section-title { font-size: clamp(1.6rem, 6vw, 2.5rem) !important; margin-bottom: 0.8rem !important; }
+  .section-label { margin-bottom: 0.5rem !important; }
+  .about-features { gap: 0.6rem !important; margin-top: 1.2rem !important; }
+  .about-feature { padding: 1rem !important; }
+  .cert-grid { gap: 1.5rem !important; }
+  .testimonials-grid { gap: 1rem !important; }
+  .test-card { padding: 1.5rem !important; }
+  .faq-grid { gap: 1.5rem !important; }
+  .contact-grid { gap: 2rem !important; }
+  .hero-scroll { display: none !important; }
+  .hero-text { margin-bottom: 1.5rem !important; }
+  .map-wrap { aspect-ratio: 3/2 !important; }
+  .floating-cta { display: block; opacity: 0; }
   .schedule-images { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
@@ -738,7 +755,7 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
       <div class="section-label"><span class="section-label-dot"></span>Расписание</div>
       <h2 class="section-title">Групповые <em>занятия</em></h2>
     </div>
-    <p class="anim" style="color:var(--gray);font-size:0.88rem;margin-bottom:2rem;">Расписание обновляется еженедельно. Для записи на занятие позвоните нам или напишите в мессенджер.</p>
+    <p class="anim" style="color:var(--gray);font-size:0.88rem;margin-bottom:2rem;">Расписание обновляется еженедельно. Для записи на занятие позвоните нам для записи.</p>
     <!-- Замените файлы images/schedule-1.png и images/schedule-2.png каждую неделю -->
     <div class="schedule-images anim">
       <div class="schedule-img-wrap">
@@ -802,7 +819,7 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
 
 
 <!-- ═══ INBODY 570 ═══ -->
-<section style="padding:7rem 0;background:var(--black-2);" id="inbody">
+<section class="inbody-section" style="padding:7rem 0;background:var(--black-2);" id="inbody">
   <div class="container">
     <div class="anim" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
       <div>
@@ -1025,6 +1042,17 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
 // Навигация при скролле
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  // Floating CTA — show after scrolling past hero
+  const aboutSection = document.getElementById('about');
+  const floatingCta = document.querySelector('.floating-cta');
+  if (aboutSection && floatingCta) {
+    const aboutTop = aboutSection.getBoundingClientRect().top + window.scrollY;
+    if (window.scrollY > aboutTop - 200) {
+      floatingCta.classList.add('show');
+    } else {
+      floatingCta.classList.remove('show');
+    }
+  }
 });
 
 // Анимации при скролле

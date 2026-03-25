@@ -1,10 +1,215 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Галерея — Frau Fitness</title><meta name="description" content="Фотографии фитнес-клуба Frau Fitness в Астрахани — тренажёрный зал, групповые занятия, атмосфера.">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Галерея — Frau Fitness | Фото клуба</title>
+<meta name="description" content="Фотографии женского фитнес-клуба Frau Fitness в Астрахани — тренажёрный зал, групповые занятия, атмосфера. ул. Ноздрина 60.">
+<link rel="canonical" href="https://fraufitness.ru/gallery">
 <link rel="icon" type="image/png" href="images/logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,700;0,900;1,800;1,900&display=swap" rel="stylesheet">
-<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0a;color:#f5f1ea;font-family:'Raleway',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
-img{height:40px;margin-bottom:2rem}h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;font-style:italic;text-transform:uppercase;margin-bottom:1rem}h1 em{color:#ffe500}
-p{color:#999;font-size:0.95rem;margin-bottom:2rem;max-width:400px;line-height:1.7}
-a.btn{display:inline-flex;align-items:center;gap:0.5rem;background:#ffe500;color:#0a0a0a;padding:0.8rem 2rem;border-radius:10px;font-weight:700;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
-a.btn:hover{background:#fff23a;transform:translateY(-2px)}</style></head>
-<body><a href="/"><img src="images/logo.png" alt="Frau Fitness"></a><h1>Галерея <em>скоро</em></h1><p>Мы готовим фотографии нашего клуба. Скоро здесь появятся снимки залов и атмосферы Frau Fitness!</p><a href="/" class="btn">← На главную</a></body></html>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--black-card:#1a1a1a;--yellow:#ffe500;--yellow-hover:#fff23a;--white:#f5f1ea;--gray:#999;--border-yellow:rgba(255,229,0,0.12);--radius:16px;--radius-sm:10px;--font:'Raleway',sans-serif;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.06)}
+body{background:var(--black);color:var(--white);font-family:var(--font);font-weight:300;line-height:1.7;font-size:15px}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--yellow);text-decoration:none}
+
+.page-header{padding:5rem 0 2rem;text-align:center}
+.page-header img{height:40px;margin-bottom:1.5rem}
+.back-link{display:block;color:var(--yellow);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem}
+.page-header h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;font-style:italic;text-transform:uppercase;margin-bottom:0.8rem}
+.page-header h1 em{color:var(--yellow)}
+.page-header p{color:var(--gray);font-size:0.9rem;max-width:500px;margin:0 auto}
+
+/* ═══ ГАЛЕРЕЯ — MASONRY GRID ═══ */
+.gallery-grid{
+  columns:3;column-gap:0.6rem;
+  padding:2rem 0 3rem;
+}
+.gallery-item{
+  break-inside:avoid;margin-bottom:0.6rem;
+  border-radius:var(--radius-sm);overflow:hidden;
+  position:relative;cursor:pointer;
+}
+.gallery-item img{
+  width:100%;display:block;
+  transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.gallery-item:hover img{transform:scale(1.04);}
+.gallery-item::after{
+  content:'';position:absolute;inset:0;
+  border:1px solid transparent;border-radius:var(--radius-sm);
+  transition:border-color 0.3s;
+}
+.gallery-item:hover::after{border-color:rgba(255,229,0,0.2);}
+
+/* Лайтбокс */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);
+  align-items:center;justify-content:center;padding:2rem;
+}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:var(--radius);object-fit:contain;}
+.lightbox-close{
+  position:absolute;top:1.5rem;right:2rem;
+  background:none;border:none;color:var(--yellow);
+  font-size:2rem;cursor:pointer;z-index:2001;
+}
+.lightbox-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,229,0,0.15);border:1px solid rgba(255,229,0,0.2);
+  color:var(--yellow);width:50px;height:50px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;cursor:pointer;transition:all 0.3s;
+}
+.lightbox-nav:hover{background:var(--yellow);color:var(--black);}
+.lightbox-prev{left:1.5rem;}
+.lightbox-next{right:1.5rem;}
+
+.cta-block{text-align:center;padding:2rem 0 4rem}
+.btn{display:inline-flex;align-items:center;gap:0.6rem;padding:0.9rem 2rem;font-family:var(--font);font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;border-radius:var(--radius-sm);transition:all 0.3s}
+.btn-y{background:var(--yellow);color:var(--black)}
+.btn-y:hover{background:var(--yellow-hover);transform:translateY(-2px)}
+
+@media(max-width:768px){
+  .gallery-grid{columns:2;column-gap:0.4rem;}
+  .gallery-item{margin-bottom:0.4rem;}
+  .container{padding:0 0.8rem;}
+  .lightbox-nav{width:40px;height:40px;font-size:1rem;}
+  .lightbox-prev{left:0.5rem;}
+  .lightbox-next{right:0.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="page-header">
+    <a href="/"><img src="images/logo.png" alt="Frau Fitness"></a>
+    <a href="/" class="back-link">← На главную</a>
+    <h1>Наш <em>клуб</em></h1>
+    <p>Два просторных зала, современные тренажёры Life Fitness Insignia, уютная атмосфера — для вас.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       ГАЛЕРЕЯ ФОТО
+       Чтобы добавить фото:
+       1. Загрузите файл .jpg в папку images/gallery/ на GitHub
+       2. Добавьте строку ниже по образцу:
+          <div class="gallery-item"><img src="images/gallery/ИМЯФАЙЛА.jpg" alt="Описание" loading="lazy"></div>
+       ═══════════════════════════════════════════════ -->
+  <div class="gallery-grid" id="galleryGrid">
+
+        <div class="gallery-item"><img src="images/gallery/photo-1.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-2.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-3.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-4.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-5.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-6.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-7.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-8.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-9.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-10.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-11.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-12.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-13.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-14.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-15.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-16.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-17.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-18.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-19.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-20.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-21.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-22.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-23.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-24.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-25.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-26.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-27.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-28.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-29.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-30.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-31.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-32.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-33.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-34.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-35.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-36.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-37.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-38.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-39.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-40.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-41.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-42.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-43.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-44.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-45.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-46.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-47.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-48.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-49.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-50.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-51.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-52.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-53.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-54.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-55.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-56.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-57.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-58.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-59.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+    <div class="gallery-item"><img src="images/gallery/photo-60.jpg" alt="Frau Fitness" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+
+  </div>
+
+  <div class="cta-block">
+    <a href="tel:88521272027" class="btn btn-y">📞 Записаться: 8 (8521) 27-20-27</a>
+  </div>
+</div>
+
+<!-- Лайтбокс для просмотра фото -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+</div>
+
+<script>
+// Лайтбокс
+let currentIdx = 0;
+let images = [];
+
+document.querySelectorAll('.gallery-item img').forEach((img, i) => {
+  img.addEventListener('load', () => { images.push(img.src); });
+  img.addEventListener('click', () => {
+    currentIdx = images.indexOf(img.src);
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+  currentIdx = (currentIdx + dir + images.length) % images.length;
+  document.getElementById('lightboxImg').src = images[currentIdx];
+}
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+</script>
+</body>
+</html>
