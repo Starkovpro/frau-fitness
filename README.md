@@ -1,5 +1,3 @@
 # Frau Fitness — Woman Club
 Сайт женского фитнес-клуба, г. Астрахань.
-
-## Обновление расписания
-Замените файлы в `images/`: `schedule-1.png` (Зелёный зал), `schedule-2.png` (Оранжевый зал).
+Расписание: замените schedule-1.png и schedule-2.png в images/
