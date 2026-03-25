@@ -344,12 +344,7 @@ nav.scrolled .nav-logo img { height: 34px; }
   border-color: var(--yellow);
   background: linear-gradient(170deg, rgba(255,229,0,0.06), var(--black-card) 30%);
 }
-.pricing-card.featured::before {
-  content: 'ХИТ'; position: absolute; top: 1.2rem; right: 1.2rem;
-  background: var(--yellow); color: var(--black);
-  padding: 0.25rem 0.8rem; font-size: 0.58rem; font-weight: 800;
-  letter-spacing: 0.15em; border-radius: var(--radius-xs);
-}
+
 .p-name { font-size: 1.4rem; font-weight: 800; font-style: italic; text-transform: uppercase; margin-bottom: 0.3rem; }
 .p-desc { font-size: 0.76rem; color: var(--gray); margin-bottom: 1.8rem; }
 .p-price { display: flex; align-items: baseline; gap: 0.2rem; margin-bottom: 0.3rem; }
@@ -473,22 +468,19 @@ nav.scrolled .nav-logo img { height: 34px; }
   cursor: pointer; text-decoration: none; color: var(--white); display: block;
 }
 .blog-card:hover { border-color: var(--border-yellow); transform: translateY(-4px); box-shadow: var(--shadow); }
-.blog-thumb {
-  aspect-ratio: 16/9; background: var(--black-card);
-  display: flex; align-items: center; justify-content: center; overflow: hidden;
-}
+.blog-thumb { display: none; }
 .blog-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
 .blog-card:hover .blog-thumb img { transform: scale(1.06); }
 .blog-thumb-placeholder { color: var(--yellow); opacity: 0.15; font-size: 3rem; }
-.blog-body { padding: 1.5rem; }
+.blog-body { padding: 1rem 1.5rem; }
 .blog-tag {
   display: inline-block; background: rgba(255,229,0,0.08); color: var(--yellow);
   padding: 0.2rem 0.6rem; font-size: 0.58rem; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase;
   border-radius: var(--radius-xs); margin-bottom: 0.8rem;
 }
-.blog-card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.6rem; }
-.blog-excerpt { font-size: 0.8rem; color: var(--gray); line-height: 1.7; margin-bottom: 1rem; }
+.blog-card-title { font-size: 0.92rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.4rem; }
+.blog-excerpt { font-size: 0.78rem; color: var(--gray); line-height: 1.6; margin-bottom: 0.6rem; }
 .blog-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: var(--gray-dark); font-weight: 500; }
 .blog-read { color: var(--yellow); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 
@@ -738,10 +730,10 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
         <p>Frau Fitness — это философия гармонии тела и духа. Мы создали пространство, где каждая деталь продумана для вашего комфорта и максимального результата.</p>
         <p>Наш клуб оснащён оборудованием ведущих мировых брендов. Здесь вас ждут просторные залы и индивидуальный сервис.</p>
         <div class="about-features">
-          <div class="about-feature"><div class="about-feature-icon">◆</div><h4>Премиум зал</h4><p>с тренажёрами Life Fitness Insignia</p></div>
-          <div class="about-feature"><div class="about-feature-icon">◇</div><h4>Групповые занятия</h4><p>10+ направлений</p></div>
-          <div class="about-feature"><div class="about-feature-icon">⬡</div><h4>Персональный тренинг</h4><p>Профессиональные тренеры</p></div>
-          <div class="about-feature"><div class="about-feature-icon">✦</div><h4>Только для женщин</h4><p>Уютное женское пространство</p></div>
+          <a href="gallery.html" class="about-feature" style="text-decoration:none;color:var(--white);"><div class="about-feature-icon">◆</div><h4>Премиум зал</h4><p>с тренажёрами Life Fitness Insignia</p></a>
+          <a href="classes.html" class="about-feature" style="text-decoration:none;color:var(--white);"><div class="about-feature-icon">◇</div><h4>Групповые занятия</h4><p>10+ направлений</p></a>
+          <a href="personal.html" class="about-feature" style="text-decoration:none;color:var(--white);"><div class="about-feature-icon">⬡</div><h4>Персональный тренинг</h4><p>Профессиональные тренеры</p></a>
+          <a href="women-only.html" class="about-feature" style="text-decoration:none;color:var(--white);"><div class="about-feature-icon">✦</div><h4>Только для женщин</h4><p>Уютное женское пространство</p></a>
         </div>
       </div>
     </div>
@@ -848,11 +840,8 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
       <div class="cert-content">
         <div class="section-label"><span class="section-label-dot"></span>Подарок</div>
         <h3>Подарочный <em>сертификат</em></h3>
-        <p>Идеальный подарок для тех, кто ценит заботу о себе. Сертификат действует на все услуги -салона и фитнес-клуба Frau Fitness. Срок действия — 3 месяца с даты покупки.</p>
-        <div class="cert-tags">
-          <span class="cert-tag">3 000 ₽</span><span class="cert-tag">5 000 ₽</span>
-          <span class="cert-tag">10 000 ₽</span><span class="cert-tag">Любая сумма</span>
-        </div>
+        <p>Идеальный подарок для тех, кто ценит заботу о себе. Сертификат действует на все услуги -салона и фитнес-клуба Frau Fitness. Сертификат бессрочный.</p>
+
         <a href="tel:88521272027" class="btn btn-y">📞 Заказать сертификат</a>
       </div>
     </div>
