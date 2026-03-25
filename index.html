@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══ SEO: ИСПРАВЛЕНИЕ #1 — Полный набор мета-тегов ═══ -->
+<title>Frau Fitness — женский фитнес-клуб | SPA, тренажёрный зал, групповые занятия</title>
+<meta name="description" content="Frau Fitness — премиум женский фитнес-клуб. Тренажёрный зал, групповые занятия, йога, пилатес, SPA и сауна. ул. Ноздрина 60. Запись: 8 (8521) 27-20-27.">
+<meta name="keywords" content="фитнес клуб, женский фитнес, тренажёрный зал, групповые занятия, йога, пилатес, SPA, сауна, Frau Fitness, фитнес для женщин">
+<link rel="canonical" href="https://fraufitness.ru/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Frau Fitness">
+<meta name="theme-color" content="#0a0a0a">
+
+<!-- Open Graph (для ВКонтакте, Telegram, WhatsApp превью) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Frau Fitness — женский фитнес-клуб">
+<meta property="og:description" content="Премиум женский фитнес-клуб. Тренажёрный зал, групповые занятия, йога, SPA. Запись: 8 (8521) 27-20-27.">
+<meta property="og:url" content="https://fraufitness.ru/">
+<meta property="og:image" content="https://fraufitness.ru/images/logo.png">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Frau Fitness">
+
+<!-- Favicon (замените на свой файл) -->
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+
+<!-- Schema.org — ИСПРАВЛЕНИЕ #1: Structured Data для LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthClub",
+  "name": "Frau Fitness",
+  "alternateName": "Frau Fitness Woman Club",
+  "description": "Премиум женский фитнес-клуб. Тренажёрный зал, групповые занятия, йога, пилатес, SPA, сауна.",
+  "url": "https://fraufitness.ru",
+  "telephone": "+78521272027",
+  "email": "info@fraufitness.ru",
+  "image": "https://fraufitness.ru/images/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Ноздрина, 60",
+    "addressLocality": "город",
+    "addressCountry": "RU"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "07:00",
+      "closes": "23:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    }
+  ],
+  "priceRange": "₽₽",
+  "sameAs": [
+    "https://instagram.com/frau_fitness",
+    "https://vk.com/fraufitness"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0a0a0a;
+  --black-2: #0f0f0f;
+  --black-3: #161616;
+  --black-card: #1a1a1a;
+  --yellow: #ffe500;
+  --yellow-hover: #fff23a;
+  --yellow-dim: #bfab00;
+  --yellow-glow: rgba(255, 229, 0, 0.10);
+  --white: #f5f1ea;
+  --white-80: rgba(245, 241, 234, 0.8);
+  --white-50: rgba(245, 241, 234, 0.5);
+  --gray: #999;
+  --gray-dark: #555;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-yellow: rgba(255, 229, 0, 0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --radius-full: 50px;
+  --font: 'Raleway', sans-serif;
+  --shadow: 0 8px 32px rgba(0,0,0,0.3);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font);
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 10px; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+.section-label {
+  font-weight: 700; font-size: 0.68rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--yellow);
+  margin-bottom: 0.8rem; display: inline-flex;
+  align-items: center; gap: 0.8rem;
+  background: rgba(255,229,0,0.06); padding: 0.4rem 1.2rem 0.4rem 0.8rem;
+  border-radius: var(--radius-full); border: 1px solid rgba(255,229,0,0.1);
+}
+.section-label-dot { width: 6px; height: 6px; background: var(--yellow); border-radius: 50%; }
+.section-title {
+  font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 900;
+  font-style: italic; line-height: 1.1; margin-bottom: 1.2rem;
+  text-transform: uppercase; letter-spacing: -0.01em;
+}
+.section-title em { font-style: italic; color: var(--yellow); }
+
+/* ── АНИМАЦИИ ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes orbit { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.anim { opacity: 0; transform: translateY(35px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.anim.vis { opacity: 1; transform: translateY(0); }
+
+/* ── КНОПКИ ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.9rem 2rem; font-family: var(--font);
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  border-radius: var(--radius-sm); transition: all 0.3s;
+}
+.btn-y { background: var(--yellow); color: var(--black); }
+.btn-y:hover { background: var(--yellow-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,229,0,0.25); }
+.btn-o { background: transparent; color: var(--white); border: 1px solid var(--border); }
+.btn-o:hover { border-color: var(--yellow); color: var(--yellow); }
+
+/* ── НАВИГАЦИЯ ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.4s;
+}
+nav.scrolled {
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-yellow);
+  padding: 0.6rem 2.5rem;
+}
+.nav-logo img { height: 44px; transition: height 0.3s; }
+nav.scrolled .nav-logo img { height: 34px; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: var(--gray);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow) !important; color: var(--black) !important;
+  padding: 0.5rem 1.4rem !important; border-radius: var(--radius-xs) !important;
+  font-weight: 800 !important; transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--yellow-hover) !important; transform: translateY(-1px); box-shadow: 0 4px 15px rgba(255,229,0,0.25); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; background: none; border: none; }
+.hamburger span { width: 24px; height: 1.5px; background: var(--white); transition: all 0.3s; display: block; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; overflow: hidden; padding: 6rem 0 4rem;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 70% 35%, rgba(255,229,0,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 85%, rgba(255,229,0,0.03) 0%, transparent 50%),
+    var(--black);
+}
+.hero-orb {
+  position: absolute; width: 500px; height: 500px;
+  border-radius: 50%; top: 10%; right: -5%;
+  background: radial-gradient(circle, rgba(255,229,0,0.04), transparent 70%);
+  animation: pulse 6s ease-in-out infinite;
+}
+.hero-orb-2 {
+  position: absolute; width: 300px; height: 300px;
+  border-radius: 50%; bottom: 15%; left: -3%;
+  background: radial-gradient(circle, rgba(255,229,0,0.03), transparent 70%);
+  animation: pulse 8s ease-in-out infinite 2s;
+}
+.hero-ring {
+  position: absolute; width: 600px; height: 600px;
+  border: 1px solid rgba(255,229,0,0.04);
+  border-radius: 50%; top: 50%; right: -10%; transform: translateY(-50%);
+  animation: orbit 60s linear infinite;
+}
+.hero-ring::after {
+  content: ''; position: absolute; top: -4px; left: 50%;
+  width: 8px; height: 8px; background: var(--yellow);
+  border-radius: 50%; opacity: 0.3;
+}
+.hero-content { position: relative; z-index: 2; max-width: 680px; animation: fadeUp 1s ease-out; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(255,229,0,0.06); border: 1px solid rgba(255,229,0,0.12);
+  padding: 0.4rem 1.2rem; border-radius: var(--radius-full);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--yellow); margin-bottom: 2rem;
+}
+.hero-badge-dot { width: 6px; height: 6px; background: var(--yellow); border-radius: 50%; animation: pulse 2s infinite; }
+.hero h1 {
+  font-size: clamp(2.8rem, 6.5vw, 5rem); font-weight: 900; font-style: italic;
+  line-height: 1.05; margin-bottom: 1.5rem; text-transform: uppercase;
+}
+.hero h1 span { color: var(--yellow); position: relative; }
+.hero h1 span::after {
+  content: ''; position: absolute; bottom: 2px; left: 0;
+  width: 100%; height: 3px; background: var(--yellow); opacity: 0.3; border-radius: 2px;
+}
+.hero-text { font-size: 0.95rem; color: var(--gray); max-width: 460px; margin-bottom: 2.5rem; line-height: 1.8; }
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-stats {
+  position: absolute; bottom: 5rem; right: 4rem;
+  display: flex; gap: 2.5rem; animation: fadeIn 1.5s ease-out 0.6s both;
+}
+.hero-stat {
+  text-align: center; padding: 1.2rem 1.5rem;
+  background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius);
+}
+.hero-stat-num { font-size: 2.4rem; font-weight: 900; font-style: italic; color: var(--yellow); line-height: 1; }
+.hero-stat-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 0.3rem; font-weight: 500; }
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: var(--gray); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+  animation: float 3s ease-in-out infinite;
+}
+.hero-scroll-line { width: 1px; height: 30px; background: linear-gradient(to bottom, var(--yellow), transparent); }
+
+/* ── О КЛУБЕ ── */
+.about { padding: 7rem 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.about-visual {
+  position: relative; aspect-ratio: 4/5; border-radius: var(--radius);
+  overflow: hidden; background: var(--black-card);
+}
+.about-visual-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(145deg, rgba(255,229,0,0.08), rgba(255,229,0,0.01) 60%);
+  display: flex; align-items: center; justify-content: center;
+}
+.about-visual-logo { width: 65%; opacity: 0.12; }
+.about-visual::before {
+  content: ''; position: absolute; inset: 0; border-radius: var(--radius);
+  border: 1px solid var(--border-yellow); pointer-events: none; z-index: 1;
+}
+.about-visual::after {
+  content: ''; position: absolute; top: -15px; right: -15px;
+  width: 50%; height: 50%; border: 1px solid rgba(255,229,0,0.08); border-radius: var(--radius);
+}
+.about p { color: var(--gray); font-size: 0.92rem; margin-bottom: 1rem; line-height: 1.8; }
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.about-feature {
+  padding: 1.4rem; background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm); transition: all 0.3s;
+}
+.about-feature:hover { border-color: var(--border-yellow); transform: translateY(-2px); }
+.about-feature-icon { color: var(--yellow); font-size: 1.2rem; margin-bottom: 0.6rem; }
+.about-feature h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; }
+.about-feature p { font-size: 0.76rem; color: var(--gray); line-height: 1.5; margin: 0; }
+
+/* ── РАСПИСАНИЕ ── */
+.schedule { padding: 7rem 0; background: var(--black-2); }
+.schedule-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.schedule-img-wrap {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.schedule-img-wrap img { width: 100%; height: auto; display: block; }
+.schedule-placeholder {
+  padding: 3rem 2rem; text-align: center; color: var(--gray);
+  font-size: 0.9rem; line-height: 1.8;
+}
+.schedule-placeholder small { color: var(--gray-dark); font-size: 0.72rem; }
+
+/* ── АБОНЕМЕНТЫ ── */
+.pricing { padding: 7rem 0; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.pricing-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  padding: 2.5rem 2rem; border-radius: var(--radius);
+  position: relative; transition: all 0.4s;
+}
+.pricing-card:hover { transform: translateY(-4px); border-color: var(--border-yellow); box-shadow: var(--shadow); }
+.pricing-card.featured {
+  border-color: var(--yellow);
+  background: linear-gradient(170deg, rgba(255,229,0,0.06), var(--black-card) 30%);
+}
+.pricing-card.featured::before {
+  content: 'ХИТ'; position: absolute; top: 1.2rem; right: 1.2rem;
+  background: var(--yellow); color: var(--black);
+  padding: 0.25rem 0.8rem; font-size: 0.58rem; font-weight: 800;
+  letter-spacing: 0.15em; border-radius: var(--radius-xs);
+}
+.p-name { font-size: 1.4rem; font-weight: 800; font-style: italic; text-transform: uppercase; margin-bottom: 0.3rem; }
+.p-desc { font-size: 0.76rem; color: var(--gray); margin-bottom: 1.8rem; }
+.p-price { display: flex; align-items: baseline; gap: 0.2rem; margin-bottom: 0.3rem; }
+.p-val { font-size: 3rem; font-weight: 900; font-style: italic; color: var(--yellow); line-height: 1; }
+.p-cur { font-size: 1rem; color: var(--yellow); font-weight: 600; }
+.p-period { font-size: 0.7rem; color: var(--gray); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.p-features { list-style: none; margin-bottom: 2rem; }
+.p-features li { padding: 0.4rem 0; font-size: 0.82rem; color: var(--white-80); display: flex; align-items: center; gap: 0.5rem; }
+.p-features li::before { content: '✦'; color: var(--yellow); font-size: 0.45rem; }
+.p-btn {
+  width: 100%; padding: 0.85rem; background: transparent;
+  border: 1px solid var(--border); color: var(--white);
+  font-family: var(--font); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s; border-radius: var(--radius-xs);
+  display: block; text-align: center; text-decoration: none;
+}
+.p-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+.pricing-card.featured .p-btn { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
+.pricing-card.featured .p-btn:hover { background: var(--yellow-hover); }
+
+/* ── ТРЕНЕРЫ ── */
+.trainers { padding: 7rem 0; background: var(--black-2); }
+.trainers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.trainer-card { cursor: pointer; }
+.trainer-photo {
+  aspect-ratio: 3/4; background: var(--black-card);
+  border-radius: var(--radius); position: relative; overflow: hidden; margin-bottom: 1.2rem;
+}
+.trainer-photo-inner {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(145deg, rgba(255,229,0,0.05), rgba(255,229,0,0.01));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.trainer-card:hover .trainer-photo-inner { transform: scale(1.05); }
+.trainer-init { font-size: 3rem; font-weight: 900; font-style: italic; color: rgba(255,229,0,0.1); text-transform: uppercase; }
+.trainer-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.95), transparent 50%);
+  border-radius: var(--radius); opacity: 0; transition: opacity 0.4s;
+  display: flex; align-items: flex-end; padding: 1.3rem;
+}
+.trainer-card:hover .trainer-overlay { opacity: 1; }
+.trainer-overlay p { font-size: 0.76rem; color: var(--white-80); line-height: 1.6; }
+.t-name { font-size: 1.05rem; font-weight: 700; }
+.t-role { font-size: 0.65rem; color: var(--yellow); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.15rem; font-weight: 600; }
+
+/* ── ГАЛЕРЕЯ ── */
+.gallery { padding: 7rem 0; }
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 220px); gap: 0.8rem; margin-top: 3rem;
+}
+.gallery-item {
+  position: relative; overflow: hidden; background: var(--black-card);
+  border-radius: var(--radius-sm); cursor: pointer;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item-inner {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(145deg, rgba(255,229,0,0.05), rgba(255,229,0,0.01));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-item:hover .gallery-item-inner { transform: scale(1.06); }
+.gallery-label {
+  font-size: 1.1rem; font-weight: 700; font-style: italic;
+  color: rgba(245,241,234,0.2); text-align: center; padding: 1rem; text-transform: uppercase;
+}
+.gallery-item::after {
+  content: ''; position: absolute; inset: 0; border: 1px solid transparent;
+  border-radius: var(--radius-sm); transition: border-color 0.3s;
+}
+.gallery-item:hover::after { border-color: rgba(255,229,0,0.2); }
+
+/* ── СЕРТИФИКАТЫ ── */
+.certificates { padding: 7rem 0; background: var(--black-2); }
+.cert-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; }
+.cert-visual {
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border-yellow); box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  aspect-ratio: 16/9;
+}
+.cert-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cert-content h3 { font-size: 1.8rem; font-weight: 900; font-style: italic; text-transform: uppercase; margin-bottom: 1rem; }
+.cert-content h3 em { color: var(--yellow); }
+.cert-content p { color: var(--gray); font-size: 0.88rem; line-height: 1.8; margin-bottom: 1.5rem; }
+.cert-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.cert-tag {
+  padding: 0.5rem 1.3rem; border: 1px solid var(--border-yellow);
+  font-size: 1rem; font-weight: 700; color: var(--yellow);
+  border-radius: var(--radius-xs); transition: all 0.3s; cursor: pointer;
+}
+.cert-tag:hover { background: rgba(255,229,0,0.08); }
+
+/* ── ОТЗЫВЫ ── */
+.testimonials { padding: 7rem 0; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.test-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  padding: 2rem; border-radius: var(--radius); transition: all 0.3s;
+}
+.test-card:hover { border-color: var(--border-yellow); transform: translateY(-3px); }
+.test-quote { font-size: 3rem; color: var(--yellow); opacity: 0.2; line-height: 1; margin-bottom: 0.6rem; font-weight: 900; }
+.test-text { font-size: 0.85rem; color: var(--white-80); line-height: 1.8; margin-bottom: 1.3rem; font-style: italic; }
+.test-author { display: flex; align-items: center; gap: 0.8rem; }
+.test-avatar {
+  width: 40px; height: 40px; background: rgba(255,229,0,0.1);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; color: var(--yellow); font-size: 0.85rem;
+}
+.test-name { font-weight: 600; font-size: 0.85rem; }
+.test-info { font-size: 0.68rem; color: var(--gray); margin-top: 0.1rem; }
+.test-stars { color: var(--yellow); font-size: 0.6rem; letter-spacing: 0.12em; margin-top: 0.1rem; }
+
+/* ── БЛОГ ── */
+.blog { padding: 7rem 0; background: var(--black-2); }
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.blog-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); overflow: hidden; transition: all 0.3s;
+  cursor: pointer; text-decoration: none; color: var(--white); display: block;
+}
+.blog-card:hover { border-color: var(--border-yellow); transform: translateY(-4px); box-shadow: var(--shadow); }
+.blog-thumb {
+  aspect-ratio: 16/9; background: var(--black-card);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.blog-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.blog-card:hover .blog-thumb img { transform: scale(1.06); }
+.blog-thumb-placeholder { color: var(--yellow); opacity: 0.15; font-size: 3rem; }
+.blog-body { padding: 1.5rem; }
+.blog-tag {
+  display: inline-block; background: rgba(255,229,0,0.08); color: var(--yellow);
+  padding: 0.2rem 0.6rem; font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border-radius: var(--radius-xs); margin-bottom: 0.8rem;
+}
+.blog-card-title { font-size: 1.05rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.6rem; }
+.blog-excerpt { font-size: 0.8rem; color: var(--gray); line-height: 1.7; margin-bottom: 1rem; }
+.blog-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: var(--gray-dark); font-weight: 500; }
+.blog-read { color: var(--yellow); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* ── FAQ ── */
+.faq { padding: 7rem 0; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+.faq-list { margin-top: 0.5rem; }
+.faq-item {
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  margin-bottom: 0.6rem; overflow: hidden; transition: border-color 0.3s; cursor: pointer;
+}
+.faq-item:hover, .faq-item.open { border-color: var(--border-yellow); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 1.3rem; font-size: 0.95rem; font-weight: 600; transition: color 0.3s;
+}
+.faq-q:hover { color: var(--yellow); }
+.faq-icon { font-size: 1rem; color: var(--yellow); transition: transform 0.3s; font-weight: 300; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+.faq-item.open .faq-a { max-height: 180px; padding: 0 1.3rem 1.2rem; }
+.faq-a p { font-size: 0.82rem; color: var(--gray); line-height: 1.8; }
+
+/* ── КОНТАКТЫ ── */
+.contact { padding: 7rem 0; background: var(--black-2); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+.c-item { display: flex; gap: 1rem; margin-bottom: 1.8rem; }
+.c-icon {
+  width: 46px; height: 46px; background: rgba(255,229,0,0.06);
+  border: 1px solid var(--border-yellow); border-radius: var(--radius-xs);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+}
+.c-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-dark); margin-bottom: 0.15rem; font-weight: 600; }
+.c-val { font-size: 1rem; font-weight: 700; }
+.c-val a { color: var(--white); text-decoration: none; transition: color 0.3s; }
+.c-val a:hover { color: var(--yellow); }
+
+/* ИСПРАВЛЕНИЕ #2: Форма отправляет данные в WhatsApp */
+.contact-form { display: flex; flex-direction: column; gap: 0.8rem; }
+.form-row { display: flex; gap: 0.8rem; }
+.f-input {
+  width: 100%; padding: 0.85rem 1.1rem; background: var(--glass);
+  border: 1px solid var(--glass-border); color: var(--white);
+  font-family: var(--font); font-size: 0.83rem; font-weight: 300;
+  outline: none; transition: border-color 0.3s; border-radius: var(--radius-xs);
+}
+.f-input:focus { border-color: var(--yellow); }
+.f-input::placeholder { color: var(--gray-dark); }
+.f-textarea { resize: vertical; min-height: 100px; }
+
+.consent-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-top: 0.2rem; }
+.consent-row input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  width: 18px; height: 18px; min-width: 18px;
+  border: 1px solid var(--glass-border); border-radius: 4px;
+  background: var(--glass); cursor: pointer; margin-top: 2px;
+  position: relative; transition: all 0.2s;
+}
+.consent-row input[type="checkbox"]:checked { background: var(--yellow); border-color: var(--yellow); }
+.consent-row input[type="checkbox"]:checked::after {
+  content: '✓'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); color: var(--black); font-size: 0.7rem; font-weight: 800;
+}
+.consent-row label { font-size: 0.72rem; color: var(--gray); line-height: 1.5; cursor: pointer; }
+.consent-row label a { color: var(--yellow); text-decoration: underline; text-underline-offset: 2px; }
+
+.form-success {
+  display: none; text-align: center; padding: 2rem;
+  background: rgba(255,229,0,0.06); border: 1px solid var(--border-yellow);
+  border-radius: var(--radius-sm);
+}
+.form-success h4 { color: var(--yellow); font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+.form-success p { color: var(--gray); font-size: 0.85rem; }
+
+/* ── КАРТА ── */
+.map-wrap {
+  margin-top: 2rem; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border-yellow); aspect-ratio: 2/1;
+}
+.map-wrap iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.8) invert(0.92) contrast(1.1); }
+
+/* ── МЕССЕНДЖЕРЫ ── */
+.messengers {
+  display: flex; gap: 0.6rem; margin-top: 1.5rem;
+}
+.msg-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.65rem 1.2rem; border-radius: var(--radius-xs);
+  font-size: 0.72rem; font-weight: 700; text-decoration: none;
+  transition: all 0.3s; letter-spacing: 0.05em;
+}
+.msg-wa { background: #25D366; color: #fff; }
+.msg-wa:hover { background: #1da851; transform: translateY(-2px); }
+.msg-tg { background: #0088cc; color: #fff; }
+.msg-tg:hover { background: #006daa; transform: translateY(-2px); }
+
+/* ── ПЛАВАЮЩАЯ КНОПКА ── */
+.floating-cta {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  z-index: 900; display: none;
+}
+.floating-cta a {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--yellow); color: var(--black);
+  padding: 0.9rem 2rem; border-radius: var(--radius-full);
+  font-family: var(--font); font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; box-shadow: 0 8px 30px rgba(255,229,0,0.3); transition: all 0.3s;
+}
+.floating-cta a:hover { background: var(--yellow-hover); }
+
+/* ── FOOTER ── */
+footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
+.footer-top { display: flex; justify-content: space-between; align-items: start; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 2rem; }
+.footer-brand img { height: 45px; margin-bottom: 0.8rem; }
+.footer-tagline { font-size: 0.76rem; color: var(--gray); max-width: 260px; line-height: 1.6; }
+.footer-col h4 { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--yellow); margin-bottom: 0.8rem; }
+.footer-col a { display: block; text-decoration: none; color: var(--gray); font-size: 0.8rem; margin-bottom: 0.4rem; transition: color 0.3s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 1.5rem; border-top: 1px solid var(--border);
+  font-size: 0.7rem; color: var(--gray-dark);
+}
+.footer-socials { display: flex; gap: 0.6rem; }
+.footer-social {
+  width: 34px; height: 34px; background: var(--glass);
+  border: 1px solid var(--glass-border); border-radius: var(--radius-xs);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: var(--gray); font-size: 0.72rem; font-weight: 600; transition: all 0.3s;
+}
+.footer-social:hover { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
+
+/* ═══ ИСПРАВЛЕНИЕ #4: Единый блок media queries ═══ */
+@media (max-width: 1024px) {
+  .trainers-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { display: none; }
+  .cert-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .floating-cta { display: block; }
+  .schedule-images { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  body.menu-open .nav-links {
+    display: flex !important; flex-direction: column;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.98); padding: 5rem 2rem 2rem;
+    gap: 1.5rem; z-index: 999;
+  }
+  body.menu-open .nav-links a { font-size: 1.2rem; color: var(--white); }
+  .about-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; }
+  .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .trainers-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 160px); }
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+  .form-row { flex-direction: column; }
+  .about-visual { display: none; }
+  .footer-top { flex-direction: column; }
+  .container { padding: 0 1.2rem; }
+  .hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+  .messengers { flex-direction: column; }
+  body { padding-bottom: 5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ НАВИГАЦИЯ ═══ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="images/logo.png" alt="Frau Fitness — Woman Club">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">О клубе</a></li>
+    <li><a href="#schedule">Расписание</a></li>
+    <li><a href="#pricing">Абонементы</a></li>
+    <li><a href="#trainers">Тренеры</a></li>
+    <li><a href="#gallery">Галерея</a></li>
+    <li><a href="#blog">Блог</a></li>
+    <li><a href="tel:88521272027" class="nav-cta">📞 Записаться</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.body.classList.toggle('menu-open')" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-ring"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><div class="hero-badge-dot"></div>Woman Club</div>
+      <h1>Твоя сила.<br>Твоя <span>красота</span>.</h1>
+      <p class="hero-text">Frau Fitness — пространство, где забота о себе становится искусством. Персональный подход, современное оборудование и атмосфера, вдохновляющая на результат.</p>
+      <div class="hero-buttons">
+        <a href="tel:88521272027" class="btn btn-y">📞 Записаться</a>
+        <a href="#schedule" class="btn btn-o">Расписание</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">5+</div><div class="hero-stat-label">Лет опыта</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">2000+</div><div class="hero-stat-label">Клиентов</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">15</div><div class="hero-stat-label">Тренеров</div></div>
+  </div>
+  <div class="hero-scroll"><span>Листайте вниз</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- ═══ О КЛУБЕ ═══ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual anim">
+        <div class="about-visual-inner">
+          <img class="about-visual-logo" src="images/logo.png" alt="Frau Fitness" loading="lazy">
+        </div>
+      </div>
+      <div class="anim">
+        <div class="section-label"><span class="section-label-dot"></span>О клубе</div>
+        <h2 class="section-title">Больше чем <em>фитнес</em></h2>
+        <p>Frau Fitness — это философия гармонии тела и духа. Мы создали пространство, где каждая деталь продумана для вашего комфорта и максимального результата.</p>
+        <p>Наш клуб оснащён оборудованием ведущих мировых брендов. Здесь вас ждут просторные залы, SPA-зона и индивидуальный сервис.</p>
+        <div class="about-features">
+          <div class="about-feature"><div class="about-feature-icon">◆</div><h4>Премиум зал</h4><p>Современное оборудование</p></div>
+          <div class="about-feature"><div class="about-feature-icon">◇</div><h4>SPA & Сауна</h4><p>Хаммам, финская сауна</p></div>
+          <div class="about-feature"><div class="about-feature-icon">⬡</div><h4>Lounge зона</h4><p>Фитнес-бар и отдых</p></div>
+          <div class="about-feature"><div class="about-feature-icon">✦</div><h4>Только для женщин</h4><p>Уютное пространство</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ РАСПИСАНИЕ ═══ -->
+<section class="schedule" id="schedule">
+  <div class="container">
+    <div class="anim">
+      <div class="section-label"><span class="section-label-dot"></span>Расписание</div>
+      <h2 class="section-title">Групповые <em>занятия</em></h2>
+    </div>
+    <p class="anim" style="color:var(--gray);font-size:0.88rem;margin-bottom:2rem;">Расписание обновляется еженедельно. Для записи на занятие позвоните нам или напишите в мессенджер.</p>
+    <!-- Замените файлы images/schedule-1.jpg и images/schedule-2.jpg каждую неделю -->
+    <div class="schedule-images anim">
+      <div class="schedule-img-wrap">
+        <img src="images/schedule-1.jpg" alt="Расписание Frau Fitness — часть 1" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'schedule-placeholder\'>📋 Расписание 1<br><small>Файл: images/schedule-1.jpg</small></div>'">
+      </div>
+      <div class="schedule-img-wrap">
+        <img src="images/schedule-2.jpg" alt="Расписание Frau Fitness — часть 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'schedule-placeholder\'>📋 Расписание 2<br><small>Файл: images/schedule-2.jpg</small></div>'">
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="anim">
+      <a href="tel:88521272027" class="btn btn-y">📞 Записаться на занятие</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ АБОНЕМЕНТЫ ═══ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="anim" style="text-align:center;max-width:550px;margin:0 auto;">
+      <div class="section-label" style="justify-content:center;"><span class="section-label-dot"></span>Абонементы</div>
+      <h2 class="section-title">Выберите свой <em>план</em></h2>
+      <p style="color:var(--gray);font-size:0.88rem;">Гибкие условия, прозрачные цены. Первое пробное занятие — бесплатно.</p>
+    </div>
+    <div class="pricing-grid anim">
+      <div class="pricing-card">
+        <div class="p-name">Light</div><div class="p-desc">Для начинающих</div>
+        <div class="p-price"><span class="p-val">3 900</span><span class="p-cur">₽</span></div>
+        <div class="p-period">в месяц</div>
+        <ul class="p-features"><li>Тренажёрный зал</li><li>Групповые занятия (до 8 в мес.)</li><li>Раздевалка с полотенцами</li><li>Фитнес-диагностика</li></ul>
+        <a href="tel:88521272027" class="p-btn">📞 Записаться</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="p-name">Premium</div><div class="p-desc">Самый популярный</div>
+        <div class="p-price"><span class="p-val">6 900</span><span class="p-cur">₽</span></div>
+        <div class="p-period">в месяц</div>
+        <ul class="p-features"><li>Безлимит тренажёрного зала</li><li>Все групповые занятия</li><li>SPA & сауна</li><li>1 персональная тренировка</li><li>Программа питания</li></ul>
+        <a href="tel:88521272027" class="p-btn">📞 Записаться</a>
+      </div>
+      <div class="pricing-card">
+        <div class="p-name">VIP</div><div class="p-desc">Максимум возможностей</div>
+        <div class="p-price"><span class="p-val">12 900</span><span class="p-cur">₽</span></div>
+        <div class="p-period">в месяц</div>
+        <ul class="p-features"><li>Всё из Premium</li><li>4 персональных тренировки</li><li>Массаж (2 сеанса)</li><li>Персональный диетолог</li><li>Гостевой визит (1 чел.)</li><li>Приоритетная запись</li></ul>
+        <a href="tel:88521272027" class="p-btn">📞 Записаться</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ТРЕНЕРЫ ═══ -->
+<section class="trainers" id="trainers">
+  <div class="container">
+    <div class="anim">
+      <div class="section-label"><span class="section-label-dot"></span>Команда</div>
+      <h2 class="section-title">Наши <em>тренеры</em></h2>
+    </div>
+    <div class="trainers-grid anim">
+      <div class="trainer-card">
+        <div class="trainer-photo"><div class="trainer-photo-inner"><span class="trainer-init">АС</span></div><div class="trainer-overlay"><p>Сертифицированный инструктор йоги. 8 лет опыта. Хатха, виньяса, медитация.</p></div></div>
+        <div class="t-name">Анна Соколова</div><div class="t-role">Йога & Медитация</div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo"><div class="trainer-photo-inner"><span class="trainer-init">ЕВ</span></div><div class="trainer-overlay"><p>Мастер спорта. 12 лет в фитнесе. HIIT, функциональный тренинг.</p></div></div>
+        <div class="t-name">Елена Волкова</div><div class="t-role">HIIT & Кроссфит</div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo"><div class="trainer-photo-inner"><span class="trainer-init">МК</span></div><div class="trainer-overlay"><p>Международный сертификат Polestar Pilates. 10 лет практики.</p></div></div>
+        <div class="t-name">Мария Кузнецова</div><div class="t-role">Пилатес & Стретчинг</div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo"><div class="trainer-photo-inner"><span class="trainer-init">КЛ</span></div><div class="trainer-overlay"><p>Чемпионка по фитнес-бикини. Силовой тренинг, подготовка к соревнованиям.</p></div></div>
+        <div class="t-name">Ксения Лебедева</div><div class="t-role">Силовой тренинг</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ГАЛЕРЕЯ ═══ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="anim">
+      <div class="section-label"><span class="section-label-dot"></span>Галерея</div>
+      <h2 class="section-title">Загляните <em>внутрь</em></h2>
+    </div>
+    <div class="gallery-grid anim">
+      <div class="gallery-item"><div class="gallery-item-inner"><span class="gallery-label">Тренажёрный зал</span></div></div>
+      <div class="gallery-item"><div class="gallery-item-inner"><span class="gallery-label">Зал групповых занятий</span></div></div>
+      <div class="gallery-item"><div class="gallery-item-inner"><span class="gallery-label">SPA & Сауна</span></div></div>
+      <div class="gallery-item"><div class="gallery-item-inner"><span class="gallery-label">Lounge зона</span></div></div>
+      <div class="gallery-item"><div class="gallery-item-inner"><span class="gallery-label">Бассейн</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ СЕРТИФИКАТЫ ═══ -->
+<section class="certificates" id="certificates">
+  <div class="container">
+    <div class="cert-grid anim">
+      <div class="cert-visual">
+        <img src="images/cert.jpg" alt="Подарочный сертификат Frau Fitness" loading="lazy">
+      </div>
+      <div class="cert-content">
+        <div class="section-label"><span class="section-label-dot"></span>Подарок</div>
+        <h3>Подарочный <em>сертификат</em></h3>
+        <p>Идеальный подарок для тех, кто ценит заботу о себе. Сертификат действует на все услуги SPA-салона и фитнес-клуба Frau Fitness. Срок действия — 3 месяца с даты покупки.</p>
+        <div class="cert-tags">
+          <span class="cert-tag">3 000 ₽</span><span class="cert-tag">5 000 ₽</span>
+          <span class="cert-tag">10 000 ₽</span><span class="cert-tag">Любая сумма</span>
+        </div>
+        <a href="tel:88521272027" class="btn btn-y">📞 Заказать сертификат</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ОТЗЫВЫ ═══ -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="anim" style="text-align:center;max-width:550px;margin:0 auto;">
+      <div class="section-label" style="justify-content:center;"><span class="section-label-dot"></span>Отзывы</div>
+      <h2 class="section-title">Слова наших <em>клиентов</em></h2>
+    </div>
+    <div class="testimonials-grid anim">
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <p class="test-text">Лучший фитнес-клуб! Атмосфера, тренеры, оборудование — на высшем уровне. Уже год занимаюсь и не представляю жизнь без Frau Fitness.</p>
+        <div class="test-author"><div class="test-avatar">ИК</div><div><div class="test-name">Ирина Козлова</div><div class="test-info">Клиент 1 год</div><div class="test-stars">★ ★ ★ ★ ★</div></div></div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <p class="test-text">После родов искала клуб с чутким подходом. Составили программу восстановления — за 6 месяцев вернулась в форму!</p>
+        <div class="test-author"><div class="test-avatar">НС</div><div><div class="test-name">Наталья Смирнова</div><div class="test-info">Клиент 8 мес.</div><div class="test-stars">★ ★ ★ ★ ★</div></div></div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <p class="test-text">SPA-зона после тренировки — отдельный вид удовольствия. Рекомендую всем подругам!</p>
+        <div class="test-author"><div class="test-avatar">ОВ</div><div><div class="test-name">Ольга Васильева</div><div class="test-info">Клиент 2 года</div><div class="test-stars">★ ★ ★ ★ ★</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ БЛОГ ═══ -->
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="anim" style="text-align:center;max-width:600px;margin:0 auto;">
+      <div class="section-label" style="justify-content:center;"><span class="section-label-dot"></span>Наш блог</div>
+      <h2 class="section-title">Полезные <em>статьи</em></h2>
+      <p style="color:var(--gray);font-size:0.88rem;">Советы по фитнесу, питанию и здоровому образу жизни от экспертов Frau Fitness</p>
+    </div>
+    <div class="blog-grid anim">
+      <a href="blog/kak-nachat-trenirovki.html" class="blog-card">
+        <div class="blog-thumb"><div class="blog-thumb-placeholder">🏋️</div></div>
+        <div class="blog-body">
+          <span class="blog-tag">Для новичков</span>
+          <div class="blog-card-title">Как начать тренироваться: 7 советов для женщин</div>
+          <p class="blog-excerpt">Первый шаг — самый сложный. Рассказываем, как преодолеть страх перед залом и составить план тренировок.</p>
+          <div class="blog-meta"><span>15 марта 2026</span><span class="blog-read">Читать →</span></div>
+        </div>
+      </a>
+      <a href="blog/pitanie-posle-trenirovki.html" class="blog-card">
+        <div class="blog-thumb"><div class="blog-thumb-placeholder">🥗</div></div>
+        <div class="blog-body">
+          <span class="blog-tag">Питание</span>
+          <div class="blog-card-title">Что есть после тренировки: гид по питанию</div>
+          <p class="blog-excerpt">Белковое окно — миф или реальность? Разбираемся, какие продукты помогут восстановиться.</p>
+          <div class="blog-meta"><span>10 марта 2026</span><span class="blog-read">Читать →</span></div>
+        </div>
+      </a>
+      <a href="blog/yoga-dlya-nachinayuschih.html" class="blog-card">
+        <div class="blog-thumb"><div class="blog-thumb-placeholder">🧘</div></div>
+        <div class="blog-body">
+          <span class="blog-tag">Йога</span>
+          <div class="blog-card-title">Йога для начинающих: с чего начать</div>
+          <p class="blog-excerpt">Хатха, виньяса, инь-йога — наш тренер Анна Соколова объясняет разницу и помогает выбрать.</p>
+          <div class="blog-meta"><span>5 марта 2026</span><span class="blog-read">Читать →</span></div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;" class="anim">
+      <a href="blog/" class="btn btn-o">Все статьи →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="anim">
+        <div class="section-label"><span class="section-label-dot"></span>FAQ</div>
+        <h2 class="section-title">Частые <em>вопросы</em></h2>
+        <p style="color:var(--gray);font-size:0.88rem;margin-top:1rem;">Не нашли ответ?<br>Звоните: <a href="tel:88521272027" style="color:var(--yellow);text-decoration:none;font-weight:600;">8 (8521) 27-20-27</a></p>
+      </div>
+      <div class="faq-list anim">
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Есть ли пробное занятие? <span class="faq-icon">+</span></div><div class="faq-a"><p>Да! Первое пробное занятие абсолютно бесплатно. Познакомьтесь с залом, оборудованием и тренерами без обязательств.</p></div></div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Можно ли заморозить абонемент? <span class="faq-icon">+</span></div><div class="faq-a"><p>Да, заморозка возможна на 7–30 дней. Для Premium и VIP заморозка включена в стоимость.</p></div></div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Какой режим работы? <span class="faq-icon">+</span></div><div class="faq-a"><p>Пн–Пт: 7:00–23:00, Сб–Вс: 9:00–21:00. VIP-клиенты — ранний доступ с 6:00.</p></div></div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Нужна ли подготовка? <span class="faq-icon">+</span></div><div class="faq-a"><p>Нет! Мы рады клиентам с любым уровнем. Тренеры подберут нагрузку индивидуально.</p></div></div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Есть ли детская комната? <span class="faq-icon">+</span></div><div class="faq-a"><p>Да, детская комната с профессиональной няней для детей от 3 лет.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ КОНТАКТЫ — ИСПРАВЛЕНИЕ #2: Рабочая форма + карта + мессенджеры ═══ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="anim">
+      <div class="section-label"><span class="section-label-dot"></span>Контакты</div>
+      <h2 class="section-title">Свяжитесь <em>с нами</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="anim">
+        <div class="c-item"><div class="c-icon">📍</div><div><div class="c-label">Адрес</div><div class="c-val">ул. Ноздрина, 60</div></div></div>
+        <div class="c-item"><div class="c-icon">📞</div><div><div class="c-label">Телефон</div><div class="c-val"><a href="tel:88521272027">8 (8521) 27-20-27</a></div></div></div>
+        <div class="c-item"><div class="c-icon">📸</div><div><div class="c-label">Instagram</div><div class="c-val"><a href="https://instagram.com/frau_fitness" target="_blank" rel="noopener noreferrer">@frau_fitness</a></div></div></div>
+        <div class="c-item"><div class="c-icon">💬</div><div><div class="c-label">ВКонтакте</div><div class="c-val"><a href="https://vk.com/fraufitness" target="_blank" rel="noopener noreferrer">fraufitness</a></div></div></div>
+        <div class="c-item"><div class="c-icon">⏰</div><div><div class="c-label">Часы работы</div><div class="c-val">Пн–Пт: 7:00–23:00<br>Сб–Вс: 9:00–21:00</div></div></div>
+
+        <!-- Кнопки мессенджеров -->
+        <div class="messengers">
+          <a href="https://wa.me/78521272027?text=Здравствуйте!%20Хочу%20записаться%20на%20занятие%20в%20Frau%20Fitness" target="_blank" rel="noopener noreferrer" class="msg-btn msg-wa">💬 WhatsApp</a>
+          <a href="https://t.me/fraufitness" target="_blank" rel="noopener noreferrer" class="msg-btn msg-tg">✈️ Telegram</a>
+        </div>
+
+        <!-- Яндекс Карта -->
+        <div class="map-wrap">
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afraufitness&amp;source=constructor&amp;ll=52.05,55.79&amp;z=15&amp;pt=52.05,55.79,pm2ylm" loading="lazy" title="Frau Fitness на карте"></iframe>
+        </div>
+      </div>
+
+      <!-- ИСПРАВЛЕНИЕ #2: Форма отправляет заявку в WhatsApp -->
+      <div class="anim">
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <input type="text" class="f-input" placeholder="Ваше имя" id="fName" required>
+            <input type="tel" class="f-input" placeholder="Телефон" id="fPhone" required>
+          </div>
+          <select class="f-input" style="color:var(--gray-dark);" id="fPlan">
+            <option value="">Выберите абонемент</option>
+            <option value="Light — 3 900 ₽/мес">Light — 3 900 ₽/мес</option>
+            <option value="Premium — 6 900 ₽/мес">Premium — 6 900 ₽/мес</option>
+            <option value="VIP — 12 900 ₽/мес">VIP — 12 900 ₽/мес</option>
+            <option value="Пробное занятие">Пробное занятие (бесплатно)</option>
+          </select>
+          <textarea class="f-input f-textarea" placeholder="Сообщение (необязательно)" id="fMsg"></textarea>
+
+          <!-- Согласие на обработку персональных данных -->
+          <div class="consent-row">
+            <input type="checkbox" id="consent">
+            <label for="consent">Нажимая кнопку, я даю согласие на <a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').style.display='block'">обработку персональных данных</a> в соответствии с <a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').style.display='block'">Политикой конфиденциальности</a></label>
+          </div>
+
+          <button type="button" class="btn btn-y" id="submitBtn" disabled style="justify-content:center;width:100%;opacity:0.4;cursor:not-allowed;" onclick="sendForm()">Отправить заявку в WhatsApp →</button>
+          <p style="text-align:center;font-size:0.72rem;color:var(--gray);margin-top:0.5rem;">Или позвоните: <a href="tel:88521272027" style="color:var(--yellow);text-decoration:none;font-weight:600;">8 (8521) 27-20-27</a></p>
+        </div>
+
+        <!-- Сообщение об успехе -->
+        <div class="form-success" id="formSuccess">
+          <h4>✓ Заявка отправлена!</h4>
+          <p>Сейчас откроется WhatsApp с вашей заявкой. Мы ответим в течение 15 минут.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ПЛАВАЮЩАЯ КНОПКА (МОБИЛЬНАЯ) ═══ -->
+<div class="floating-cta">
+  <a href="tel:88521272027">📞 Записаться на занятие</a>
+</div>
+
+<!-- ═══ ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ═══ -->
+<div id="privacyModal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);overflow-y:auto;padding:2rem;">
+  <div style="max-width:700px;margin:4rem auto;background:var(--black-card);border:1px solid var(--border-yellow);border-radius:var(--radius);padding:2.5rem;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <h3 style="font-size:1.3rem;font-weight:800;font-style:italic;text-transform:uppercase;">Политика конфиденциальности</h3>
+      <button onclick="document.getElementById('privacyModal').style.display='none'" style="background:none;border:none;color:var(--yellow);font-size:1.5rem;cursor:pointer;" aria-label="Закрыть">×</button>
+    </div>
+    <div style="font-size:0.83rem;color:var(--gray);line-height:1.8;">
+      <p style="margin-bottom:1rem;"><strong style="color:var(--white);">1. Общие положения</strong><br>Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных посетителей сайта fraufitness.ru (далее — «Сайт»), принадлежащего фитнес-клубу Frau Fitness (далее — «Оператор»).</p>
+      <p style="margin-bottom:1rem;"><strong style="color:var(--white);">2. Собираемые данные</strong><br>Оператор может собирать следующие данные: имя, номер телефона, адрес электронной почты — исключительно для связи с клиентом и обработки заявки на услуги клуба.</p>
+      <p style="margin-bottom:1rem;"><strong style="color:var(--white);">3. Цели обработки</strong><br>Персональные данные обрабатываются для: ответа на заявку, информирования об услугах и акциях клуба, улучшения качества обслуживания.</p>
+      <p style="margin-bottom:1rem;"><strong style="color:var(--white);">4. Защита данных</strong><br>Оператор принимает необходимые организационные и технические меры для защиты персональных данных от неправомерного доступа.</p>
+      <p><strong style="color:var(--white);">5. Контакты</strong><br>По вопросам обработки персональных данных обращайтесь: 8 (8521) 27-20-27, ул. Ноздрина, 60.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Frau Fitness" loading="lazy">
+        <p class="footer-tagline">Woman Club — премиум фитнес для тех, кто ценит качество, комфорт и результат.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Навигация</h4>
+        <a href="#about">О клубе</a><a href="#schedule">Расписание</a><a href="#pricing">Абонементы</a><a href="#trainers">Тренеры</a><a href="#blog">Блог</a>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="#">Персональные тренировки</a><a href="#">Групповые занятия</a><a href="#">SPA & Массаж</a><a href="#certificates">Сертификаты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:88521272027">8 (8521) 27-20-27</a>
+        <a href="#">ул. Ноздрина, 60</a>
+        <a href="https://instagram.com/frau_fitness" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://vk.com/fraufitness" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Frau Fitness. Woman Club. Все права защищены.</span>
+      <div class="footer-socials">
+        <a href="https://instagram.com/frau_fitness" class="footer-social" target="_blank" rel="noopener noreferrer">IG</a>
+        <a href="https://vk.com/fraufitness" class="footer-social" target="_blank" rel="noopener noreferrer">VK</a>
+        <a href="https://wa.me/78521272027" class="footer-social" target="_blank" rel="noopener noreferrer">WA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Навигация при скролле
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Анимации при скролле
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((el, i) => {
+    if (el.isIntersecting) setTimeout(() => el.target.classList.add('vis'), i * 80);
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.anim').forEach(el => obs.observe(el));
+
+// FAQ аккордеон
+function toggleFaq(item) {
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+
+// Мобильное меню — закрытие при клике на ссылку
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.body.classList.remove('menu-open'));
+});
+
+// ИСПРАВЛЕНИЕ #2: Чекбокс согласия активирует/деактивирует кнопку
+const consentBox = document.getElementById('consent');
+const submitBtn = document.getElementById('submitBtn');
+consentBox.addEventListener('change', function() {
+  submitBtn.disabled = !this.checked;
+  submitBtn.style.opacity = this.checked ? '1' : '0.4';
+  submitBtn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+});
+
+// ИСПРАВЛЕНИЕ #2: Отправка формы в WhatsApp
+function sendForm() {
+  const name = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const plan = document.getElementById('fPlan').value;
+  const msg = document.getElementById('fMsg').value.trim();
+
+  if (!name) { alert('Пожалуйста, укажите ваше имя'); return; }
+  if (!phone) { alert('Пожалуйста, укажите номер телефона'); return; }
+
+  // Формируем сообщение для WhatsApp
+  let text = `Здравствуйте! Заявка с сайта fraufitness.ru\n\n`;
+  text += `Имя: ${name}\n`;
+  text += `Телефон: ${phone}\n`;
+  if (plan) text += `Абонемент: ${plan}\n`;
+  if (msg) text += `Сообщение: ${msg}\n`;
+
+  // Показываем успех
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+
+  // Открываем WhatsApp
+  const waUrl = `https://wa.me/78521272027?text=${encodeURIComponent(text)}`;
+  window.open(waUrl, '_blank');
+}
+
+// Политика конфиденциальности — закрытие по клику вне окна
+document.getElementById('privacyModal').addEventListener('click', function(e) {
+  if (e.target === this) this.style.display = 'none';
+});
+</script>
+</body>
+</html>
