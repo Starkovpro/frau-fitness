@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InBody 570 — анализ состава тела | Frau Fitness Астрахань</title>
+<meta name="description" content="Профессиональный анализ состава тела на InBody 570 в фитнес-клубе Frau Fitness. Узнайте точное соотношение мышц, жира и воды за 45 секунд. Астрахань, ул. Ноздрина 60.">
+<link rel="canonical" href="https://fraufitness.ru/inbody">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--black-2:#0f0f0f;--black-card:#1a1a1a;--yellow:#ffe500;--yellow-hover:#fff23a;--white:#f5f1ea;--gray:#999;--gray-dark:#555;--border:rgba(255,255,255,0.06);--border-yellow:rgba(255,229,0,0.12);--radius:16px;--radius-sm:10px;--radius-xs:6px;--font:'Raleway',sans-serif;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.06)}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--font);font-weight:300;line-height:1.7;font-size:15px}
+.container{max-width:900px;margin:0 auto;padding:0 2rem}
+a{color:var(--yellow);text-decoration:none}
+
+.page-header{padding:6rem 0 3rem;text-align:center;}
+.page-header img{height:40px;margin-bottom:2rem;}
+.page-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;font-style:italic;text-transform:uppercase;margin-bottom:1rem;}
+.page-header h1 em{color:var(--yellow);}
+.page-header p{color:var(--gray);font-size:0.95rem;max-width:600px;margin:0 auto;line-height:1.8;}
+.back-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--yellow);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2rem;}
+
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,229,0,0.06);border:1px solid rgba(255,229,0,0.12);padding:0.4rem 1.2rem;border-radius:50px;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.5rem;}
+
+/* Photo placeholder */
+.inbody-photo{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:4rem 2rem;text-align:center;margin:3rem 0;}
+.inbody-photo-icon{font-size:5rem;margin-bottom:1rem;}
+.inbody-photo-text{color:var(--gray);font-size:0.8rem;}
+
+/* Content sections */
+.content-block{margin:3rem 0;}
+.content-block h2{font-size:1.6rem;font-weight:900;font-style:italic;text-transform:uppercase;margin-bottom:1.2rem;}
+.content-block h2 em{color:var(--yellow);}
+.content-block p{color:var(--gray);font-size:0.92rem;line-height:1.9;margin-bottom:1rem;}
+
+/* Features grid */
+.features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.feature{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:1.5rem;transition:all 0.3s;}
+.feature:hover{border-color:var(--border-yellow);}
+.feature-icon{font-size:1.5rem;margin-bottom:0.6rem;}
+.feature h3{font-size:0.95rem;font-weight:700;margin-bottom:0.3rem;}
+.feature p{font-size:0.8rem;color:var(--gray);line-height:1.6;margin:0;}
+
+/* Stats */
+.stats-row{display:flex;gap:1.5rem;margin:2rem 0;justify-content:center;flex-wrap:wrap;}
+.stat-item{text-align:center;padding:1.5rem 2rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);flex:1;min-width:150px;}
+.stat-num{font-size:2.5rem;font-weight:900;font-style:italic;color:var(--yellow);line-height:1;}
+.stat-label{font-size:0.65rem;color:var(--gray);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;font-weight:500;}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+.step{text-align:center;padding:1.5rem;}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--yellow);color:var(--black);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;margin:0 auto 1rem;}
+.step h3{font-size:0.9rem;font-weight:700;margin-bottom:0.4rem;}
+.step p{font-size:0.78rem;color:var(--gray);line-height:1.6;}
+
+.cta-block{text-align:center;padding:3rem 0 5rem;}
+.btn{display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.5rem;font-family:var(--font);font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;border-radius:var(--radius-sm);transition:all 0.3s;}
+.btn-y{background:var(--yellow);color:var(--black);}
+.btn-y:hover{background:var(--yellow-hover);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,229,0,0.25);}
+
+@media(max-width:768px){
+  .features,.steps{grid-template-columns:1fr;}
+  .container{padding:0 1.2rem;}
+  .stats-row{flex-direction:column;}
+}
+</style>
+
+<!-- Schema.org для InBody -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Анализ состава тела InBody 570",
+  "provider": {
+    "@type": "HealthClub",
+    "name": "Frau Fitness",
+    "address": { "@type": "PostalAddress", "streetAddress": "ул. Ноздрина, 60", "addressLocality": "Астрахань", "addressCountry": "RU" }
+  },
+  "description": "Профессиональный анализ состава тела на аппарате InBody 570. Точное определение мышечной массы, жировой ткани, содержания воды и минералов за 45 секунд."
+}
+</script>
+</head>
+<body>
+
+<div class="container">
+  <div class="page-header">
+    <a href="/"><img src="images/logo.png" alt="Frau Fitness"></a>
+    <a href="/" class="back-link">← На главную</a>
+    <div class="hero-badge">⚡ Эксклюзивно в Frau Fitness</div>
+    <h1>InBody <em>570</em></h1>
+    <p>Профессиональный анализатор состава тела медицинского класса. Узнайте своё тело до мельчайших деталей — всего за 45 секунд.</p>
+  </div>
+
+  <!-- Фото InBody — замените на реальное фото -->
+  <div class="inbody-photo" id="inbody-photo">
+    <div class="inbody-photo-icon">⚡</div>
+    <div style="font-size:2rem;font-weight:900;font-style:italic;color:var(--yellow);text-transform:uppercase;">InBody 570</div>
+    <p class="inbody-photo-text" style="margin-top:1rem;">Фото аппарата будет добавлено позже</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-item"><div class="stat-num">45</div><div class="stat-label">секунд на анализ</div></div>
+    <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">точность измерений</div></div>
+    <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">параметров тела</div></div>
+  </div>
+
+  <div class="content-block">
+    <h2>Что такое <em>InBody 570</em>?</h2>
+    <p>InBody 570 — это профессиональный анализатор состава тела, который используется в медицинских центрах, научных лабораториях и ведущих фитнес-клубах по всему миру. В отличие от обычных весов, которые показывают только общий вес, InBody разделяет тело на компоненты: мышцы, жир, вода и минералы.</p>
+    <p>Аппарат использует технологию биоэлектрического импедансного анализа (БИА) с мультичастотными измерениями на 6 частотах, что обеспечивает точность, сопоставимую с методом DEXA-сканирования — золотым стандартом в медицине.</p>
+  </div>
+
+  <div class="content-block">
+    <h2>Что вы <em>узнаете</em>?</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">💪</div>
+        <h3>Мышечная масса</h3>
+        <p>Точный вес мышц по каждой части тела — руки, ноги, торс. Видно, где есть дисбаланс.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Процент жира</h3>
+        <p>Общий и сегментарный анализ жировой ткани. Не просто цифра — а понимание, где жир накапливается.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💧</div>
+        <h3>Водный баланс</h3>
+        <p>Содержание внутриклеточной и внеклеточной воды. Показывает, нет ли отёков или обезвоживания.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🦴</div>
+        <h3>Минеральный состав</h3>
+        <p>Содержание минералов в костях. Важный показатель для женского здоровья и профилактики остеопороза.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚖️</div>
+        <h3>Базальный метаболизм</h3>
+        <p>Сколько калорий сжигает ваш организм в покое. Основа для правильного плана питания.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📈</div>
+        <h3>История изменений</h3>
+        <p>Сравнение результатов с предыдущими измерениями. Наглядный прогресс ваших тренировок.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h2>Как проходит <em>измерение</em>?</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Подготовка</h3>
+        <p>Снимите обувь и носки. Встаньте на платформу и возьмите рукоятки аппарата.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Измерение</h3>
+        <p>Стойте неподвижно 45 секунд. Аппарат пропускает безопасные микротоки через тело.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Результат</h3>
+        <p>Получаете подробный отчёт с графиками. Тренер объяснит каждый показатель.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h2>Кому <em>полезен</em> InBody?</h2>
+    <p>Каждой женщине, которая заботится о своём здоровье и хочет тренироваться эффективно. Вот конкретные ситуации:</p>
+    <p>Если вы только начинаете — InBody покажет стартовую точку и поможет тренеру составить правильную программу именно для вас. Если вы тренируетесь давно — увидите, действительно ли ваши тренировки работают, растут ли мышцы и уходит ли жир.</p>
+    <p>Если вы на диете — убедитесь, что уходит именно жир, а не мышечная масса. Если вы восстанавливаетесь после родов — отслеживайте возвращение к форме с точными данными, а не догадками.</p>
+  </div>
+
+  <div class="content-block" style="background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:2rem;margin:3rem 0;">
+    <h2 style="text-align:center;">Почему InBody, а не <em>обычные весы</em>?</h2>
+    <p style="text-align:center;max-width:600px;margin:0 auto;">Обычные весы показывают только общий вес. Вы можете набрать 2 кг мышц и сбросить 2 кг жира — весы покажут 0 изменений. А InBody покажет, что вы стали сильнее, стройнее и здоровее. Это принципиально другой уровень контроля над своим телом.</p>
+  </div>
+
+  <div class="cta-block">
+    <p style="color:var(--gray);font-size:0.95rem;margin-bottom:1.5rem;">Хотите узнать свой состав тела? Запишитесь на измерение!</p>
+    <a href="tel:88521272027" class="btn btn-y">📞 Записаться: 8 (8521) 27-20-27</a>
+    <p style="color:var(--gray-dark);font-size:0.75rem;margin-top:1rem;">г. Астрахань, ул. Ноздрина, 60</p>
+  </div>
+</div>
+
+</body>
+</html>
