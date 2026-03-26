@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--black:#0a0a0a;--black-2:#0f0f0f;--black-card:#1a1a1a;--yellow:#ffe500;--yellow-hover:#fff23a;--white:#f5f1ea;--gray:#999;--gray-dark:#555;--border:rgba(255,255,255,0.06);--border-yellow:rgba(255,229,0,0.12);--radius:16px;--radius-sm:10px;--radius-xs:6px;--font:'Raleway',sans-serif;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.06)}
+:root{--black:#0a0a0a;--black-2:#0f0f0f;--black-card:#1a1a1a;--yellow:#ffff00;--yellow-hover:#ffff44;--white:#f5f1ea;--gray:#999;--gray-dark:#555;--border:rgba(255,255,255,0.06);--border-yellow:rgba(255,255,0,0.12);--radius:16px;--radius-sm:10px;--radius-xs:6px;--font:'Raleway',sans-serif;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.06)}
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:var(--font);font-weight:300;line-height:1.7;font-size:15px}
 .container{max-width:900px;margin:0 auto;padding:0 2rem}
@@ -23,7 +23,7 @@ a{color:var(--yellow);text-decoration:none}
 .page-header p{color:var(--gray);font-size:0.95rem;max-width:600px;margin:0 auto;line-height:1.8;}
 .back-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--yellow);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2rem;}
 
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,229,0,0.06);border:1px solid rgba(255,229,0,0.12);padding:0.4rem 1.2rem;border-radius:50px;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.5rem;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,0,0.06);border:1px solid rgba(255,255,0,0.12);padding:0.4rem 1.2rem;border-radius:50px;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.5rem;}
 
 /* Photo placeholder */
 .inbody-photo{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:4rem 2rem;text-align:center;margin:3rem 0;}
@@ -60,7 +60,7 @@ a{color:var(--yellow);text-decoration:none}
 .cta-block{text-align:center;padding:3rem 0 5rem;}
 .btn{display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.5rem;font-family:var(--font);font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;border-radius:var(--radius-sm);transition:all 0.3s;}
 .btn-y{background:var(--yellow);color:var(--black);}
-.btn-y:hover{background:var(--yellow-hover);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,229,0,0.25);}
+.btn-y:hover{background:var(--yellow-hover);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,255,0,0.25);}
 
 @media(max-width:768px){
   .features,.steps{grid-template-columns:1fr;}
@@ -110,7 +110,7 @@ a{color:var(--yellow);text-decoration:none}
 
   <div class="content-block">
     <h2>Что такое <em>InBody 570</em>?</h2>
-    <p>InBody 570 — это профессиональный анализатор состава тела, который используется в медицинских центрах, научных лабораториях и ведущих фитнес-клубах по всему миру. В отличие от обычных весов, которые показывают только общий вес, InBody разделяет тело на компоненты: мышцы, жир, вода и минералы.</p>
+    <p>InBody 570 — это профессиональный анализатор состава тела, который поможет выявить скрытые проблемы, включая саркопению — опасное состояние, при котором при внешне хорошей физической форме и нормальном ИМТ организм теряет мышечную ткань, заменяя её жировой. Аппарат используется в медицинских центрах, научных лабораториях и ведущих фитнес-клубах по всему миру. В отличие от обычных весов, которые показывают только общий вес, InBody разделяет тело на компоненты: мышцы, жир, вода и минералы.</p>
     <p>Аппарат использует технологию биоэлектрического импедансного анализа (БИА) с мультичастотными измерениями на 6 частотах, что обеспечивает точность, сопоставимую с методом DEXA-сканирования — золотым стандартом в медицине.</p>
   </div>
 
@@ -185,7 +185,7 @@ a{color:var(--yellow);text-decoration:none}
 
   <div class="cta-block">
     <p style="color:var(--gray);font-size:0.95rem;margin-bottom:1.5rem;">Хотите узнать свой состав тела? Запишитесь на измерение!</p>
-    <a href="tel:88521272027" class="btn btn-y">📞 Записаться: 8 (8521) 27-20-27</a>
+    <a href="tel:88512272027" class="btn btn-y">📞 Записаться: 8 (8512) 27-20-27</a>
     <p style="color:var(--gray-dark);font-size:0.75rem;margin-top:1rem;">г. Астрахань, ул. Ноздрина, 60</p>
   </div>
 </div>
