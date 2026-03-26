@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /images/gallery/
+
+Sitemap: https://fraufitness.ru/sitemap.xml
+
+# Frau Fitness — Woman Club
+# г. Астрахань, ул. Ноздрина, 60
+# 8 (8512) 27-20-27

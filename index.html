@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ═══ SEO: ИСПРАВЛЕНИЕ #1 — Полный набор мета-тегов ═══ -->
-<title>Frau Fitness — женский фитнес-клуб | тренажёрный зал, групповые занятия</title>
-<meta name="description" content="Frau Fitness — премиум женский фитнес-клуб. Тренажёрный зал, групповые занятия, йога, пилатес, ул. Ноздрина 60. Запись: 8 (8512) 27-20-27.">
+<title>Frau Fitness — женский фитнес-клуб в Астрахани | тренажёрный зал, групповые занятия</title>
+<meta name="description" content="Frau Fitness — премиум женский фитнес-клуб в Астрахани. Тренажёрный зал, групповые занятия, йога, пилатес. 2 бесплатных пробных занятия. ул. Ноздрина 60. Запись: 8 (8512) 27-20-27.">
 <meta name="keywords" content="фитнес клуб, женский фитнес, тренажёрный зал, групповые занятия, йога, пилатес, Frau Fitness, фитнес для женщин">
 <link rel="canonical" href="https://fraufitness.ru/">
 <meta name="robots" content="index, follow">
@@ -22,6 +22,20 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Frau Fitness">
 
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Frau Fitness — женский фитнес-клуб в Астрахани">
+<meta name="twitter:description" content="Премиум женский фитнес-клуб. Тренажёрный зал, групповые занятия. Два пробных занятия бесплатно.">
+<meta name="twitter:image" content="https://fraufitness.ru/images/logo.png">
+
+
+<!-- Geo tags для локального SEO -->
+<meta name="geo.region" content="RU-AST">
+<meta name="geo.placename" content="Астрахань">
+<meta name="geo.position" content="46.3497;48.0336">
+<meta name="ICBM" content="46.3497, 48.0336">
+
 <!-- Favicon (замените на свой файл) -->
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="apple-touch-icon" href="images/logo.png">
@@ -33,7 +47,7 @@
   "@type": "HealthClub",
   "name": "Frau Fitness",
   "alternateName": "Frau Fitness Woman Club",
-  "description": "Премиум женский фитнес-клуб. Тренажёрный зал, групповые занятия, йога, пилатес, ",
+  "description": "Премиум женский фитнес-клуб. Тренажёрный зал, групповые занятия, йога, пилатес.",
   "url": "https://fraufitness.ru",
   "telephone": "+78512272027",
   "email": "info@fraufitness.ru",
@@ -47,19 +61,29 @@
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
       "opens": "08:00",
       "closes": "22:00"
     },
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Saturday"],
+      "dayOfWeek": [
+        "Saturday"
+      ],
       "opens": "09:00",
       "closes": "22:00"
     },
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Sunday"],
+      "dayOfWeek": [
+        "Sunday"
+      ],
       "opens": "09:00",
       "closes": "20:00"
     }
@@ -69,24 +93,6 @@
     "https://vk.com/frau_fitness"
   ]
 }
-
-// Cookie баннер
-if (!localStorage.getItem('cookieConsent')) {
-  document.getElementById('cookieBanner').style.display = 'block';
-}
-function acceptCookies() {
-  localStorage.setItem('cookieConsent', 'accepted');
-  document.getElementById('cookieBanner').style.display = 'none';
-}
-function declineCookies() {
-  localStorage.setItem('cookieConsent', 'declined');
-  document.getElementById('cookieBanner').style.display = 'none';
-}
-
-// Privacy modal
-document.getElementById('privacyModal').addEventListener('click', function(e) {
-  if (e.target === this) this.style.display = 'none';
-});
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -673,6 +679,39 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
   body { padding-bottom: 5rem; }
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Есть ли пробное занятие в Frau Fitness?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да! Два пробных занятия для новых клиентов абсолютно бесплатно. Одно занятие на групповые программы и одно занятие с персональным тренером в тренажёрный зал."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли заморозить абонемент?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Заморозка не предусмотрена, но мы с радостью идём на встречу нашим клиентам."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Какой режим работы Frau Fitness?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Пн–Пт: 8:00–22:00, Сб: 9:00–22:00, Вс: 9:00–20:00. Адрес: г. Астрахань, ул. Ноздрина, 60."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -804,7 +843,7 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
       <div class="section-label"><span class="section-label-dot"></span>Галерея</div>
       <h2 class="section-title">Загляните <em>внутрь</em></h2>
     </div>
-    <p class="anim" style="color:var(--gray);font-size:0.92rem;margin-bottom:2rem;">Два просторных зала, современное оборудование, уютная атмосфера — убедитесь сами.</p>
+    <p class="anim" style="color:var(--gray);font-size:0.92rem;margin-bottom:2rem;">Современное оборудование, уютная атмосфера — убедитесь сами.</p>
     <div style="text-align:center;" class="anim">
       <a href="gallery.html" class="btn btn-y" style="font-size:0.85rem;padding:1.2rem 3rem;">📷 Открыть галерею</a>
     </div>
@@ -859,8 +898,22 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
       <h2 class="section-title">Слова наших <em>клиентов</em></h2>
     </div>
     <div class="testimonials-grid anim">
-      
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <p class="test-text">Лучший фитнес-клуб! Атмосфера, тренеры, оборудование — на высшем уровне. Уже год занимаюсь и не представляю жизнь без Frau Fitness.</p>
+        <div class="test-author"><div class="test-avatar">ИК</div><div><div class="test-name">Ирина Козлова</div><div class="test-info">Клиент 1 год</div><div class="test-stars">★ ★ ★ ★ ★</div></div></div>
       </div>
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <p class="test-text">После родов искала клуб с чутким подходом. Составили программу восстановления — за 6 месяцев вернулась в форму!</p>
+        <div class="test-author"><div class="test-avatar">НС</div><div><div class="test-name">Наталья Смирнова</div><div class="test-info">Клиент 8 мес.</div><div class="test-stars">★ ★ ★ ★ ★</div></div></div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <p class="test-text">Тренер Светлана — просто чудо! Внимательная, чуткая, всегда найдёт подход. Благодаря ей я полюбила тренировки и вижу результат каждую неделю.</p>
+        <div class="test-author"><div class="test-avatar">ЕМ</div><div><div class="test-name">Екатерина Морозова</div><div class="test-info">Клиент 1.5 года</div><div class="test-stars">★ ★ ★ ★ ★</div></div></div>
+      </div>
+    </div>
     </div>
   </div>
 </section>
