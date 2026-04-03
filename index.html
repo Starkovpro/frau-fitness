@@ -50,7 +50,7 @@
   "description": "Премиум женский фитнес-клуб. Тренажёрный зал, групповые занятия, йога, пилатес.",
   "url": "https://fraufitness.ru",
   "telephone": "+78512272027",
-  "email": "info@fraufitness.ru",
+  "email": "fraufit79@mail.ru",
   "image": "https://fraufitness.ru/images/logo.png",
   "address": {
     "@type": "PostalAddress",
@@ -678,6 +678,17 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
   .messengers { flex-direction: column; }
   body { padding-bottom: 5rem; }
 }
+
+/* ── РАСПИСАНИЕ GOOGLE SHEETS ── */
+.sched-table { width:100%; border-collapse:collapse; font-size:0.78rem; }
+.sched-table th { background:var(--yellow); color:var(--black); padding:0.6rem 0.5rem; font-weight:700; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.04em; text-align:center; white-space:nowrap; }
+.sched-table td { padding:0.5rem; border-bottom:1px solid var(--glass-border); color:var(--gray); text-align:center; font-size:0.76rem; min-width:90px; }
+.sched-table td:first-child { color:var(--yellow); font-weight:600; white-space:nowrap; }
+.sched-table tr:hover td { background:var(--glass); }
+.sched-table td:not(:empty):not(:first-child) { color:var(--white); font-weight:500; }
+.sched-tab.active { background:var(--yellow) !important; color:var(--black) !important; border-color:var(--yellow) !important; }
+.sched-tab:not(.active):hover { border-color:var(--yellow) !important; color:var(--yellow) !important; }
+@media(max-width:768px) { .sched-table { font-size:0.68rem; } .sched-table th,.sched-table td { padding:0.35rem 0.25rem; } }
 </style>
 
 <script type="application/ld+json">
@@ -743,10 +754,10 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
     <div class="hero-content">
       <div class="hero-badge"><div class="hero-badge-dot"></div>Woman Club</div>
       <h1>Твоя сила.<br>Твоя <span>красота</span>.</h1>
-      <p class="hero-text">Frau Fitness — пространство, где забота о себе становится искусством. Персональный подход, современное оборудование и атмосфера, вдохновляющая на результат.</p>
+      <p class="hero-text">Единственный женский фитнес-клуб в Астрахани с оборудованием Life Fitness Insignia. 8 лет, 2000+ клиенток, 13 направлений групповых занятий. Два пробных занятия — бесплатно.</p>
       <div class="hero-buttons">
         <a href="tel:88512272027" class="btn btn-y">📞 Записаться</a>
-        <a href="#schedule" class="btn btn-o">Расписание</a>
+        <a href="https://vk.com/frau_fitness" target="_blank" rel="noopener noreferrer" class="btn btn-o">💬 Написать в ВК</a>
       </div>
     </div>
   </div>
@@ -790,13 +801,23 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
       <h2 class="section-title">Групповые <em>занятия</em></h2>
     </div>
     <p class="anim" style="color:var(--gray);font-size:0.88rem;margin-bottom:2rem;">Расписание обновляется еженедельно. Для записи на занятие позвоните нам.</p>
-    <!-- Замените файлы images/schedule-1.png и images/schedule-2.png каждую неделю -->
-    <div class="schedule-images anim">
+    <!-- Расписание подтягивается из Google Таблицы автоматически -->
+    <div class="schedule-tabs anim" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;">
+      <button class="sched-tab active" onclick="showHall(0)" style="background:var(--yellow);color:var(--black);border:none;padding:0.5rem 1.5rem;border-radius:var(--radius-xs);font-family:var(--font);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;">Зелёный зал</button>
+      <button class="sched-tab" onclick="showHall(1)" style="background:transparent;color:var(--gray);border:1px solid var(--border);padding:0.5rem 1.5rem;border-radius:var(--radius-xs);font-family:var(--font);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;">Оранжевый зал</button>
+    </div>
+    <div id="schedule-container" class="anim" style="overflow-x:auto;">
+      <div id="hall-0" class="hall-schedule"></div>
+      <div id="hall-1" class="hall-schedule" style="display:none;"></div>
+      <p id="sched-fallback" style="display:none;text-align:center;color:var(--gray);font-size:0.85rem;padding:2rem;">Расписание загружается... Если таблица не отображается — <a href="tel:88512272027" style="color:var(--yellow);">позвоните нам</a>.</p>
+    </div>
+    <!-- Fallback: PNG images if Google Sheets not configured -->
+    <div id="schedule-images-fallback" class="schedule-images anim">
       <div class="schedule-img-wrap">
-        <img src="images/schedule-1.png" alt="Расписание Frau Fitness — часть 1" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'schedule-placeholder\'>📋 Расписание 1<br><small>Файл: images/schedule-1.png</small></div>'">
+        <img src="images/schedule-1.png" alt="Расписание Frau Fitness — Зелёный зал" loading="lazy">
       </div>
       <div class="schedule-img-wrap">
-        <img src="images/schedule-2.png" alt="Расписание Frau Fitness — часть 2" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'schedule-placeholder\'>📋 Расписание 2<br><small>Файл: images/schedule-2.png</small></div>'">
+        <img src="images/schedule-2.png" alt="Расписание Frau Fitness — Оранжевый зал" loading="lazy">
       </div>
     </div>
     <div style="text-align:center;margin-top:2rem;" class="anim">
@@ -986,7 +1007,11 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
         <h3 style="font-size:1.5rem;font-weight:900;font-style:italic;text-transform:uppercase;">Записаться <span style="color:var(--yellow);">на занятие</span></h3>
         <p style="color:var(--gray);font-size:0.88rem;max-width:320px;">Позвоните нам — подберём тренера, зал и удобное время для вас</p>
         <a href="tel:88512272027" class="btn btn-y" style="font-size:0.85rem;padding:1.2rem 3rem;">📞 Позвонить: 8 (8512) 27-20-27</a>
+        <a href="https://vk.com/frau_fitness" target="_blank" rel="noopener noreferrer" class="btn btn-o" style="margin-top:0.5rem;font-size:0.75rem;">💬 Написать в ВК</a>
       </div>
+    </div>
+    <div class="map-wrap anim">
+      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afraufitness&source=constructorLink&ll=48.0336%2C46.3497&z=16&pt=48.0336%2C46.3497%2Cpm2ylm" width="100%" height="100%" frameborder="0" loading="lazy" title="Frau Fitness на карте"></iframe>
     </div>
   </div>
 </section>
@@ -1114,6 +1139,81 @@ function declineCookies() {
 document.getElementById('privacyModal').addEventListener('click', function(e) {
   if (e.target === this) this.style.display = 'none';
 });
+
+// === Google Sheets Schedule ===
+// ИНСТРУКЦИЯ: Замените URL ниже на ваши ссылки из Google Sheets (Файл → Опубликовать → CSV)
+const SHEET_URLS = [
+  '', // URL для Зелёного зала (Лист 1)
+  ''  // URL для Оранжевого зала (Лист 2)
+];
+
+function parseCSV(text) {
+  return text.trim().split('\n').map(row => {
+    const cells = []; let current = ''; let inQuotes = false;
+    for (let c of row) {
+      if (c === '"') { inQuotes = !inQuotes; }
+      else if (c === ',' && !inQuotes) { cells.push(current.trim()); current = ''; }
+      else { current += c; }
+    }
+    cells.push(current.trim());
+    return cells;
+  });
+}
+
+function renderTable(data) {
+  if (!data || data.length < 2) return '<p style="color:var(--gray);text-align:center;">Нет данных</p>';
+  let html = '<table class="sched-table"><tr>';
+  data[0].forEach(h => { html += '<th>' + h + '</th>'; });
+  html += '</tr>';
+  for (let i = 1; i < data.length; i++) {
+    html += '<tr>';
+    data[i].forEach(cell => { html += '<td>' + (cell || '') + '</td>'; });
+    html += '</tr>';
+  }
+  return html + '</table>';
+}
+
+async function loadSchedule(hallIdx) {
+  const url = SHEET_URLS[hallIdx];
+  if (!url) return null;
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) return null;
+    const text = await resp.text();
+    return parseCSV(text);
+  } catch(e) { return null; }
+}
+
+const schedData = [null, null];
+async function initSchedule() {
+  let anyLoaded = false;
+  for (let i = 0; i < 2; i++) {
+    if (SHEET_URLS[i]) {
+      schedData[i] = await loadSchedule(i);
+      if (schedData[i]) {
+        document.getElementById('hall-' + i).innerHTML = renderTable(schedData[i]);
+        anyLoaded = true;
+      }
+    }
+  }
+  if (anyLoaded) {
+    document.getElementById('schedule-images-fallback').style.display = 'none';
+    document.querySelector('.schedule-tabs').style.display = 'flex';
+  } else {
+    // Show PNG fallback, hide tabs
+    document.querySelector('.schedule-tabs').style.display = 'none';
+    document.getElementById('schedule-container').style.display = 'none';
+    document.getElementById('schedule-images-fallback').style.display = 'grid';
+  }
+}
+
+function showHall(idx) {
+  document.querySelectorAll('.hall-schedule').forEach((el,i) => { el.style.display = i === idx ? 'block' : 'none'; });
+  document.querySelectorAll('.sched-tab').forEach((btn,i) => { btn.classList.toggle('active', i === idx); });
+}
+
+initSchedule();
+
 </script>
 </body>
 </html>
