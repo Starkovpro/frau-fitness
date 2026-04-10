@@ -1,64 +1,157 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Блог — Frau Fitness | Статьи о фитнесе, питании и здоровье</title>
-<meta name="description" content="Блог Frau Fitness — полезные статьи о фитнесе, питании и здоровом образе жизни для женщин. Астрахань.">
-<link rel="canonical" href="https://fraufitness.ru/blog">
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог — Frau Fitness | Статьи о фитнесе, питании и здоровье для женщин</title>
+<meta name="description" content="Блог Frau Fitness — экспертные статьи о фитнесе, питании, похудении и здоровом образе жизни для женщин. Советы тренеров женского фитнес-клуба в Астрахани.">
+<meta name="keywords" content="блог фитнес, статьи о фитнесе, фитнес для женщин, похудение, тренировки, питание, женский фитнес Астрахань, Frau Fitness">
+<link rel="canonical" href="https://fraufitness.ru/blog/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Frau Fitness">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Блог Frau Fitness — статьи о фитнесе и здоровье">
+<meta property="og:description" content="Экспертные статьи о фитнесе, питании и здоровом образе жизни для женщин от тренеров Frau Fitness.">
+<meta property="og:url" content="https://fraufitness.ru/blog/">
+<meta property="og:image" content="https://fraufitness.ru/images/logo.png">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Frau Fitness">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Блог Frau Fitness">
+<meta name="twitter:description" content="Экспертные статьи о фитнесе и здоровье для женщин.">
+<meta name="twitter:image" content="https://fraufitness.ru/images/logo.png">
 <link rel="icon" type="image/png" href="../images/logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,700;0,900;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"Блог Frau Fitness","description":"Статьи о фитнесе, питании и здоровом образе жизни для женщин","url":"https://fraufitness.ru/blog/","publisher":{"@type":"Organization","name":"Frau Fitness","logo":{"@type":"ImageObject","url":"https://fraufitness.ru/images/logo.png"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://fraufitness.ru/"},{"@type":"ListItem","position":2,"name":"Блог","item":"https://fraufitness.ru/blog/"}]}
+</script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0a;color:#f5f1ea;font-family:'Raleway',sans-serif;padding:2rem}
-.container{max-width:780px;margin:0 auto}a{color:#ffff00;text-decoration:none}
-.hd{text-align:center;padding:5rem 0 2rem}.hd img{height:36px;margin-bottom:1.5rem}
-h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;font-style:italic;text-transform:uppercase;margin-bottom:1rem}h1 em{color:#ffff00}
-.bl{display:block;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
-.card{display:block;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:1.5rem;margin-bottom:1rem;transition:all .3s;text-decoration:none;color:#f5f1ea}
-.card:hover{border-color:rgba(255,255,0,0.12);transform:translateY(-2px)}
-.card h2{font-size:1rem;font-weight:700;margin-bottom:.4rem}.card p{font-size:.82rem;color:#999;line-height:1.6}
-.card .date{font-size:.65rem;color:#555;margin-top:.5rem}
-</style></head>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--black-card:#1a1a1a;--yellow:#ffff00;--yellow-hover:#ffff44;--white:#f5f1ea;--gray:#999;--gray-dark:#555;--border-yellow:rgba(255,255,0,0.12);--radius:16px;--radius-sm:10px;--radius-xs:6px;--font:'Raleway',sans-serif;--glass:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.06)}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--font);font-weight:300;line-height:1.7;font-size:15px;min-height:100vh}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+a{color:var(--yellow);text-decoration:none}
+
+.page-header{padding:5rem 0 2rem;text-align:center}
+.page-header img{height:40px;margin-bottom:1.5rem}
+.back-link{display:inline-block;color:var(--yellow);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
+.page-header h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;font-style:italic;text-transform:uppercase;margin-bottom:.8rem}
+.page-header h1 em{color:var(--yellow)}
+.page-header p{color:var(--gray);font-size:.92rem;max-width:560px;margin:0 auto}
+
+.blog-list{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;padding:3rem 0 2rem}
+.blog-card{display:block;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.8rem;text-decoration:none;color:var(--white);transition:all .3s}
+.blog-card:hover{border-color:var(--border-yellow);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.blog-tag{display:inline-block;background:rgba(255,255,0,.08);color:var(--yellow);padding:.25rem .7rem;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--radius-xs);margin-bottom:1rem}
+.blog-card h2{font-size:1.05rem;font-weight:700;line-height:1.4;margin-bottom:.6rem;color:var(--white)}
+.blog-card p{font-size:.82rem;color:var(--gray);line-height:1.6;margin-bottom:1rem}
+.blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:var(--gray-dark);font-weight:500;padding-top:.8rem;border-top:1px solid var(--glass-border)}
+.blog-read{color:var(--yellow);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
+.loading,.empty{text-align:center;padding:4rem 1rem;color:var(--gray);font-size:.9rem}
+.loading::after{content:'...';animation:dots 1.5s steps(4,end) infinite}
+@keyframes dots{0%,20%{content:''}40%{content:'.'}60%{content:'..'}80%,100%{content:'...'}}
+
+.cta-block{text-align:center;padding:2rem 0 4rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.2rem;font-family:var(--font);font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border-radius:var(--radius-sm);transition:all .3s}
+.btn-y{background:var(--yellow);color:var(--black)}
+.btn-y:hover{background:var(--yellow-hover);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,255,0,.25)}
+
+@media(max-width:768px){
+  .blog-list{grid-template-columns:1fr;gap:.8rem;padding:2rem 0}
+  .blog-card{padding:1.4rem}
+  .container{padding:0 1rem}
+  .page-header{padding:4rem 0 1rem}
+}
+
+/* SEO fallback: hidden static list with all article links — invisible but indexable */
+.seo-fallback{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
 <body>
+
 <div class="container">
-  <div class="hd">
+  <div class="page-header">
+    <a href="/" class="back-link">← На главную</a>
     <a href="/"><img src="../images/logo.png" alt="Frau Fitness"></a>
-    <a href="/" class="bl">← На главную</a>
     <h1>Наш <em>блог</em></h1>
-    <p style="color:#999;font-size:.9rem;">Советы по фитнесу, питанию и здоровому образу жизни</p>
+    <p>Экспертные статьи о фитнесе, питании и здоровом образе жизни от тренеров Frau Fitness</p>
   </div>
 
-  <a href="intervalnoe-golodanie-i-trenirovki" class="card">
-    <h2>Интервальное голодание и тренировки: совместимы ли они</h2>
-    <p>Можно ли тренироваться при ИГ? Разбираем схемы 16/8 и 5:2, влияние на мышцы и жиросжигание у женщин.</p>
-    <div class="date">10 апреля 2026</div>
-  </a>
+  <!-- JS-driven article list -->
+  <div id="blog-list" class="blog-list">
+    <div class="loading">Загружаем статьи</div>
+  </div>
 
-  <a href="kak-ubrat-zhivot-posle-rodov" class="card">
-    <h2>Как убрать живот после родов: безопасные упражнения</h2>
-    <p>Когда начинать тренировки, как проверить диастаз и какие упражнения безопасны. Пошаговая программа.</p>
-    <div class="date">10 апреля 2026</div>
-  </a>
+  <!-- SEO fallback: search engines see all article links even without JS -->
+  <noscript>
+    <div class="blog-list">
+      <a href="/blog/kardio-ili-silovye-dlya-pokhudeniya" class="blog-card">
+        <span class="blog-tag">Тренировки</span>
+        <h2>Кардио или силовые для похудения: что эффективнее для женщин</h2>
+        <div class="blog-meta"><span>3 апреля 2026</span><span class="blog-read">Читать →</span></div>
+      </a>
+      <a href="/blog/ves-stoit-na-meste-pri-trenirovkakh" class="blog-card">
+        <span class="blog-tag">Похудение</span>
+        <h2>Почему вес стоит на месте при тренировках: 10 причин плато</h2>
+        <div class="blog-meta"><span>3 апреля 2026</span><span class="blog-read">Читать →</span></div>
+      </a>
+      <a href="/blog/skolko-kaloriy-szhigaet-trenirovka-v-zale" class="blog-card">
+        <span class="blog-tag">Тренировки</span>
+        <h2>Сколько калорий сжигает тренировка в зале: таблица по видам нагрузки</h2>
+        <div class="blog-meta"><span>30 марта 2026</span><span class="blog-read">Читать →</span></div>
+      </a>
+      <a href="/blog/kak-pokhudet-zhenshhine-posle-30" class="blog-card">
+        <span class="blog-tag">Похудение</span>
+        <h2>Как похудеть женщине после 30: пошаговый план от тренера</h2>
+        <div class="blog-meta"><span>30 марта 2026</span><span class="blog-read">Читать →</span></div>
+      </a>
+    </div>
+  </noscript>
 
-  <a href="kardio-ili-silovye-dlya-pokhudeniya" class="card">
-    <h2>Кардио или силовые для похудения: что эффективнее для женщин</h2>
-    <p>Сравнительная таблица, научные данные и рекомендации. Как сочетать оба типа тренировок.</p>
-    <div class="date">3 апреля 2026</div>
-  </a>
-
-  <a href="ves-stoit-na-meste-pri-trenirovkakh" class="card">
-    <h2>Почему вес стоит на месте при тренировках: 10 причин плато</h2>
-    <p>Тренируетесь, но вес не уходит? 10 причин и конкретные решения от тренеров FRAU FITNESS.</p>
-    <div class="date">3 апреля 2026</div>
-  </a>
-
-  <a href="skolko-kaloriy-szhigaet-trenirovka-v-zale" class="card">
-    <h2>Сколько калорий сжигает тренировка в зале: таблица</h2>
-    <p>Подробная таблица расхода калорий при силовых, кардио, HIIT, йоге и пилатесе.</p>
-    <div class="date">30 марта 2026</div>
-  </a>
-
-  <a href="kak-pokhudet-zhenshhine-posle-30" class="card">
-    <h2>Как похудеть женщине после 30: пошаговый план от тренера</h2>
-    <p>Почему после 30 сложнее худеть? Тренировки, питание, восстановление — полный гид.</p>
-    <div class="date">30 марта 2026</div>
-  </a>
+  <div class="cta-block">
+    <a href="tel:88512272027" class="btn btn-y">📞 Записаться: 8 (8512) 27-20-27</a>
+  </div>
 </div>
-</body></html>
+
+<script>
+// Load articles from manifest and render the list
+(async function() {
+  const container = document.getElementById('blog-list');
+  try {
+    const resp = await fetch('/blog/articles.json', { cache: 'no-cache' });
+    if (!resp.ok) throw new Error('Не удалось загрузить список статей');
+    const articles = await resp.json();
+    if (!Array.isArray(articles) || articles.length === 0) {
+      container.innerHTML = '<div class="empty">Пока статей нет. Скоро здесь появятся первые материалы!</div>';
+      return;
+    }
+    // Sort newest first by date
+    articles.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    container.innerHTML = articles.map(a => `
+      <a href="/blog/${a.slug}" class="blog-card">
+        <span class="blog-tag">${escapeHtml(a.tag || 'Статья')}</span>
+        <h2>${escapeHtml(a.title || '')}</h2>
+        <p>${escapeHtml(a.excerpt || '')}</p>
+        <div class="blog-meta">
+          <span>${escapeHtml(a.dateDisplay || a.date || '')}</span>
+          <span class="blog-read">Читать →</span>
+        </div>
+      </a>
+    `).join('');
+  } catch (err) {
+    console.error('Blog loader error:', err);
+    container.innerHTML = '<div class="empty">Не удалось загрузить статьи. <a href="tel:88512272027" style="color:var(--yellow)">Позвоните нам</a> или попробуйте позже.</div>';
+  }
+})();
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+</script>
+</body>
+</html>
