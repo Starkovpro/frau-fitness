@@ -1213,7 +1213,25 @@ function showHall(idx) {
 }
 
 initSchedule();
-
+// === Автозагрузка 2 новейших статей из articles.json ===
+fetch('blog/articles.json')
+  .then(r => r.json())
+  .then(articles => {
+    const grid = document.querySelector('.blog-grid');
+    if (!grid || !articles.length) return;
+    const top2 = articles.slice(0, 2);
+    grid.innerHTML = top2.map(a =>
+      '<a href="blog/' + a.slug + '" class="blog-card">' +
+        '<div class="blog-body">' +
+          '<span class="blog-tag">' + a.tag + '</span>' +
+          '<div class="blog-card-title">' + a.title + '</div>' +
+          '<p class="blog-excerpt">' + a.excerpt + '</p>' +
+          '<div class="blog-meta"><span>' + a.dateDisplay + '</span><span class="blog-read">Читать →</span></div>' +
+        '</div>' +
+      '</a>'
+    ).join('');
+  })
+  .catch(() => {});
 </script>
 </body>
 </html>
