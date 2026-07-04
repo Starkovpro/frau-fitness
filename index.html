@@ -1101,13 +1101,17 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Анимации при скролле
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((el, i) => {
-    if (el.isIntersecting) setTimeout(() => el.target.classList.add('vis'), i * 80);
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.anim').forEach(el => obs.observe(el));
+// Анимации при скролле (в try/catch — при любой ошибке просто показываем контент)
+try {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((el, i) => {
+      if (el.isIntersecting) setTimeout(() => el.target.classList.add('vis'), i * 80);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.anim').forEach(el => obs.observe(el));
+} catch (e) {
+  document.querySelectorAll('.anim').forEach(el => el.classList.add('vis'));
+}
 
 // FAQ аккордеон
 function toggleFaq(item) {
@@ -1196,14 +1200,17 @@ async function initSchedule() {
       }
     }
   }
+  const fb = document.getElementById('schedule-images-fallback');
+  const tabs = document.querySelector('.schedule-tabs');
+  const cont = document.getElementById('schedule-container');
   if (anyLoaded) {
-    document.getElementById('schedule-images-fallback').style.display = 'none';
-    document.querySelector('.schedule-tabs').style.display = 'flex';
+    if (fb) fb.style.display = 'none';
+    if (tabs) tabs.style.display = 'flex';
   } else {
     // Show PNG fallback, hide tabs
-    document.querySelector('.schedule-tabs').style.display = 'none';
-    document.getElementById('schedule-container').style.display = 'none';
-    document.getElementById('schedule-images-fallback').style.display = 'grid';
+    if (tabs) tabs.style.display = 'none';
+    if (cont) cont.style.display = 'none';
+    if (fb) fb.style.display = 'grid';
   }
 }
 
@@ -1232,6 +1239,20 @@ fetch('blog/articles.json')
     ).join('');
   })
   .catch(() => {});
+
+// Метка: основной скрипт дошёл до конца без синтаксических ошибок
+window.__fitOK = true;
+</script>
+<script>
+// СТРАХОВКА: если основной скрипт выше не завершился (ошибка/опечатка в коде),
+// принудительно показываем все секции — чтобы страница никогда не грузилась «только верхом».
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    if (!window.__fitOK) {
+      document.querySelectorAll('.anim').forEach(function (el) { el.classList.add('vis'); });
+    }
+  }, 500);
+});
 </script>
 </body>
 </html>
