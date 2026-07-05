@@ -18,8 +18,15 @@
   function render(hall, period) {
     var h = '';
     h += '<div class="ffp-scope"><div class="ffp">';
+    h += renderHead(period);
+    h += renderBody(hall);
+    h += '</div></div>';
+    return h;
+  }
 
-    /* ── Чёрная шапка с логотипом ── */
+  /* Чёрная шапка: логотип + заголовок + период */
+  function renderHead(period) {
+    var h = '';
     h += '<div class="ffp-head">';
     h += '<div class="ffp-brand">';
     h += '<img class="ffp-logo" src="images/schedule-logo.png" alt="Frau Fitness — Woman Club">';
@@ -28,8 +35,12 @@
     h += '<span class="ffp-title-main">Расписание<br>групповых занятий</span>';
     h += '<span class="ffp-period" data-edit="period">' + esc(period) + '</span>';
     h += '</div></div>';
+    return h;
+  }
 
-    /* ── Белое тело с таблицей ── */
+  /* Белое тело: подпись зала + таблица */
+  function renderBody(hall) {
+    var h = '';
     h += '<div class="ffp-body">';
     h += '<div class="ffp-hall" data-edit="label">' + esc(hall.label) + '</div>';
     h += '<table class="ffp-table"><thead><tr><th class="ffp-th-time"></th>';
@@ -52,9 +63,9 @@
       h += '</tr>';
     }
 
-    h += '</tbody></table></div></div></div>';
+    h += '</tbody></table></div>';
     return h;
   }
 
-  window.FFPoster = { render: render, DAYS: DAYS, esc: esc };
+  window.FFPoster = { render: render, renderHead: renderHead, renderBody: renderBody, DAYS: DAYS, esc: esc };
 })();

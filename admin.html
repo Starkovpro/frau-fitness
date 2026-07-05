@@ -302,6 +302,7 @@ details.howto b { color: var(--white-80); font-weight: 600; }
   <!-- ══ Публикация ══ -->
   <div class="publish-bar">
     <button id="publishBtn" class="btn primary" onclick="publish()">Загрузить на сайт</button>
+    <button id="printBtn" class="btn ghost" onclick="printSchedule()">Отправить в печать</button>
     <button id="jpgBtn" class="btn ghost" onclick="downloadJpg()">Скачать JPG (текущий зал)</button>
     <button class="btn ghost" onclick="downloadJson()">Скачать schedule.json</button>
     <span id="dirtyFlag" class="dirty-flag" hidden>● есть незагруженные изменения</span>
@@ -331,8 +332,15 @@ details.howto b { color: var(--white-80); font-weight: 600; }
   function render(hall, period) {
     var h = '';
     h += '<div class="ffp-scope"><div class="ffp">';
+    h += renderHead(period);
+    h += renderBody(hall);
+    h += '</div></div>';
+    return h;
+  }
 
-    /* ── Чёрная шапка с логотипом ── */
+  /* Чёрная шапка: логотип + заголовок + период */
+  function renderHead(period) {
+    var h = '';
     h += '<div class="ffp-head">';
     h += '<div class="ffp-brand">';
     h += '<img class="ffp-logo" src="images/schedule-logo.png" alt="Frau Fitness — Woman Club">';
@@ -341,8 +349,12 @@ details.howto b { color: var(--white-80); font-weight: 600; }
     h += '<span class="ffp-title-main">Расписание<br>групповых занятий</span>';
     h += '<span class="ffp-period" data-edit="period">' + esc(period) + '</span>';
     h += '</div></div>';
+    return h;
+  }
 
-    /* ── Белое тело с таблицей ── */
+  /* Белое тело: подпись зала + таблица */
+  function renderBody(hall) {
+    var h = '';
     h += '<div class="ffp-body">';
     h += '<div class="ffp-hall" data-edit="label">' + esc(hall.label) + '</div>';
     h += '<table class="ffp-table"><thead><tr><th class="ffp-th-time"></th>';
@@ -365,11 +377,11 @@ details.howto b { color: var(--white-80); font-weight: 600; }
       h += '</tr>';
     }
 
-    h += '</tbody></table></div></div></div>';
+    h += '</tbody></table></div>';
     return h;
   }
 
-  window.FFPoster = { render: render, DAYS: DAYS, esc: esc };
+  window.FFPoster = { render: render, renderHead: renderHead, renderBody: renderBody, DAYS: DAYS, esc: esc };
 })();
 
 </script>
@@ -904,6 +916,96 @@ async function downloadJpg() {
     setStatus('Картинка «' + (hall.label || ('Зал ' + (activeHall + 1))) + '» скачана ✓', 'ok');
   } catch (e) {
     setStatus('Не удалось сделать картинку в этом браузере. Открой админку с сайта (fraufitness.ru/admin) — там работает без сбоев. Ошибка: ' + (e && e.message ? e.message : 'неизвестно'), 'err');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+/* ═══════════ ОТПРАВИТЬ В ПЕЧАТЬ (A4, оба зала на одном листе) ═══════════ */
+async function printSchedule() {
+  const btn = document.getElementById('printBtn');
+  btn.disabled = true;
+  setStatus('Готовлю лист для печати…', '');
+  try {
+    const prep = cleanForSave();
+    if (prep.problems.length) {
+      setStatus('Заполни время: ' + prep.problems[0] + '. Печать без времени не имеет смысла.', 'err');
+      return;
+    }
+    const doc = prep.copy;
+    const logoUri = await getLogoDataUri();
+
+    // Общая шапка — один раз сверху листа (лого + «Расписание групповых занятий» + период)
+    const headHolder = document.createElement('div');
+    headHolder.innerHTML = '<div class="ffp-scope"><div class="ffp">' + FFPoster.renderHead(doc.period) + '</div></div>';
+    const headLogo = headHolder.querySelector('.ffp-logo');
+    if (headLogo) { if (logoUri) headLogo.setAttribute('src', logoUri); else headLogo.remove(); }
+    const headHtml = headHolder.innerHTML;
+
+    // Две таблицы залов друг под другом (без повторной шапки)
+    let tablesHtml = '';
+    for (let i = 0; i < doc.halls.length; i++) {
+      tablesHtml += '<div class="print-hall"><div class="ffp-scope"><div class="ffp">'
+                  + FFPoster.renderBody(doc.halls[i])
+                  + '</div></div></div>';
+    }
+
+    const posterCss = collectPosterCss();
+
+    const page =
+      '<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">' +
+      '<title>Расписание — печать</title>' +
+      '<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,700;0,900&display=swap" rel="stylesheet">' +
+      '<style>' +
+      '@page { size: A4 portrait; margin: 8mm; }' +
+      '* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }' +
+      'html, body { margin: 0; padding: 0; background: #fff; }' +
+      /* лист во всю высоту A4, содержимое распределяется сверху вниз */
+      '.sheet { width: 194mm; min-height: 281mm; margin: 0 auto; display: flex; flex-direction: column; }' +
+      '.print-head { flex: 0 0 auto; margin-bottom: 5mm; }' +
+      /* обе таблицы делят всю оставшуюся высоту поровну и тянутся */
+      '.print-hall { flex: 1 1 0; display: flex; flex-direction: column; margin-bottom: 6mm; page-break-inside: avoid; break-inside: avoid; }' +
+      '.print-hall:last-child { margin-bottom: 0; }' +
+      posterCss +
+      /* ── ПЕРЕОПРЕДЕЛЕНИЯ ДЛЯ ПЕЧАТИ (ЧБ, во всю высоту) ── */
+      '.sheet .ffp-scope { container-type: normal; }' +
+      '.sheet .ffp { font-size: 9px; background: #fff; }' +
+      /* шапка: без чёрного фона, текст чёрный, логотип обычного размера */
+      '.print-head .ffp-head { background: #fff !important; color: #000 !important; padding: 0 !important; align-items: flex-end; }' +
+      '.print-head .ffp-title-main, .print-head .ffp-period { color: #000 !important; }' +
+      '.print-head .ffp-logo { width: 15em; }' +
+      '.print-head .ffp { padding: 0; }' +
+      /* тело зала растягивается, таблица занимает всю высоту блока */
+      '.print-hall .ffp-body { padding: 0; flex: 1 1 auto; display: flex; flex-direction: column; }' +
+      '.print-hall .ffp-hall { margin-bottom: 1.5mm; }' +
+      '.print-hall .ffp-table { flex: 1 1 auto; height: 100%; }' +
+      /* заголовок дней — светло-серый вместо чёрного, чтобы не жрать тонер */
+      '.print-hall .ffp-table thead th { background: #f0f0f0 !important; }' +
+      '.print-hall .ffp-th-time { background: #fff !important; }' +
+      '.print-hall .ffp-cell { height: auto; padding: 0.5em 0.2em; }' +
+      '.print-hall .ffp-time { padding: 0.4em 0.15em; }' +
+      '</style></head><body>' +
+      '<div class="sheet">' +
+        '<div class="print-head">' + headHtml + '</div>' +
+        tablesHtml +
+      '</div>' +
+      '<script>' +
+      'window.onload = function(){ setTimeout(function(){ window.focus(); window.print(); }, 400); };' +
+      'window.onafterprint = function(){ setTimeout(function(){ window.close(); }, 200); };' +
+      '<\/script>' +
+      '</body></html>';
+
+    const w = window.open('', '_blank');
+    if (!w) {
+      setStatus('Браузер заблокировал всплывающее окно. Разреши всплывающие окна для этого сайта и нажми «Отправить в печать» снова.', 'err');
+      return;
+    }
+    w.document.open();
+    w.document.write(page);
+    w.document.close();
+    setStatus('Открылось окно печати. Выбери принтер (или «Сохранить в PDF») и нажми «Печать».', 'ok');
+  } catch (e) {
+    setStatus('Не удалось подготовить печать (' + (e && e.message ? e.message : 'ошибка') + '). Попробуй ещё раз.', 'err');
   } finally {
     btn.disabled = false;
   }
