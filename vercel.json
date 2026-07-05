@@ -1,23 +1,91 @@
-{
-  "version": 2,
-  "name": "frau-fitness",
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
-      ]
-    },
-    {
-      "source": "/images/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800" }
-      ]
-    }
-  ]
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://fraufitness.ru/</loc><lastmod>2026-07-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://fraufitness.ru/classes</loc><lastmod>2026-04-10</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://fraufitness.ru/personal</loc><lastmod>2026-04-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/women-only</loc><lastmod>2026-04-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/inbody</loc><lastmod>2026-04-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/gallery</loc><lastmod>2026-04-10</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://fraufitness.ru/blog</loc><lastmod>2026-07-04</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://fraufitness.ru/consent</loc><lastmod>2026-04-10</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://fraufitness.ru/blog/podgotovka-tela-k-beremennosti</loc><lastmod>2026-07-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/yoga-dlya-beremennykh</loc><lastmod>2026-07-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kesarevo-i-sport</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/yoga-doma-dlya-nachinayushchikh</loc><lastmod>2026-07-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/tabata-dlya-pokhudeniya</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/trenirovka-na-press-doma</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/planka-vidy-i-programma</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/trenirovka-s-rezinkami</loc><lastmod>2026-06-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/utrennyaya-zaryadka-dlya-zhenshhin</loc><lastmod>2026-06-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/domashniy-mini-zal</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/trenirovka-doma-bez-oborudovaniya</loc><lastmod>2026-06-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/sravnenie-sebya-s-drugimi</loc><lastmod>2026-06-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-sovmeshhat-trenirovki-s-plotnym-grafikom</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/telo-posle-30-ne-prigovor</loc><lastmod>2026-06-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/5-priznakov-plokhogo-trenera</loc><lastmod>2026-06-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/dnevnik-trenirovok-zachem-i-kak</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-stavit-fitnes-tseli-smart</loc><lastmod>2026-06-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/fitnes-zavisimost-kogda-trenirovki-problema</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/fitnes-i-mentalnoe-zdorovye</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/sindrom-samozvantsa-v-zale</loc><lastmod>2026-06-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-ne-brosit-zal-cherez-mesyats</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/personalnye-ili-gruppovye-trenirovki</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/krossfit-dlya-devushek</loc><lastmod>2026-06-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/boks-dlya-zhenshhin</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/stretching-zachem-nuzhna-rastyazhka</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/chto-takoe-trx-trenirovka</loc><lastmod>2026-06-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/tantsevalnyi-fitnes-khudeem</loc><lastmod>2026-06-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/akvaaerobika-plyusy-i-minusy</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/yoga-vs-pilates-raznitsa</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kakoy-fitnes-vybrat-zhenshhine</loc><lastmod>2026-06-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/pilates-dlya-zhenshhin-45-plus</loc><lastmod>2026-06-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/balans-i-koordinatsiya-trenirovki</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/trenirovki-dlya-osanki</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/gormonalnye-izmeneniya-i-ves-posle-40</loc><lastmod>2026-06-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-podderzhivat-metabolizm-posle-40</loc><lastmod>2026-05-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/yoga-dlya-zhenshhin-posle-50</loc><lastmod>2026-05-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-zamedlit-starenie-s-pomoshhyu-fitnesa</loc><lastmod>2026-05-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/osteoporoz-i-silovye-trenirovki</loc><lastmod>2026-05-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/trenirovki-pri-menopauze</loc><lastmod>2026-05-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/fitnes-posle-40-dlya-zhenshhin</loc><lastmod>2026-05-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/fitnes-pri-gryzhe-pozvonochnika</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/krepatura-bol-v-myshtsakh-posle-trenirovki</loc><lastmod>2026-05-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/trenirovki-pri-skolioze</loc><lastmod>2026-05-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/diastaz-pryamykh-myshts-zhivota</loc><lastmod>2026-05-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-vosstanavlivatsya-posle-trenirovok</loc><lastmod>2026-05-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/varikoz-i-fitnes-bezopasnye-trenirovki</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/rastyazhka-posle-trenirovki</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/bol-v-kolenyakh-pri-prisedaniyakh</loc><lastmod>2026-05-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-izbezhat-travm-v-zale</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/trenirovki-vo-vremya-mesyachnykh</loc><lastmod>2026-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/sportivnoe-pitanie-dlya-zhenshhin</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/bezglyutenovaya-dieta-i-fitnes</loc><lastmod>2026-05-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/poleznye-perekusy-dlya-aktivnykh-zhenshhin</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/chitmil-kak-pravilno-narushat-dietu</loc><lastmod>2026-05-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/uglevody-drug-ili-vrag</loc><lastmod>2026-05-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/menyu-na-nedelyu-pri-trenirovkakh-1500-1800-kkal</loc><lastmod>2026-05-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/skolko-belka-nuzhno-zhenshhine-v-den</loc><lastmod>2026-05-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/chto-est-do-i-posle-trenirovki-zhenshhine</loc><lastmod>2026-05-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/pravilnoe-pitanie-pri-trenirovkakh-dlya-zhenshhin</loc><lastmod>2026-05-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/supersety-dlya-zhenshhin-programma</loc><lastmod>2026-05-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/stanovaya-tyaga-tekhnika-dlya-zhenshhin</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/nuzhen-li-zhenshchinam-protein-posle-trenirovki</loc><lastmod>2026-05-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/trenirovka-yagodits-top-10-uprazhneniy</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-podtyanut-ruki-zhenshhine</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/split-ili-fulbodi-kakaya-programma-podoydet</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/bazovye-uprazhneniya-dlya-zhenshhin-tekhnika</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-uvelichit-rabochie-vesa-progressiya-nagruzki</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/programma-trenirovok-dlya-nachinayuschikh-zhenshhin</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/silovye-trenirovki-dlya-zhenshhin-mify-i-realnost</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/khodba-dlya-pokhudeniya-skolko-shagov</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-pokhudet-k-letu-plan-na-3-mesyatsa</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/defitsit-kaloriy-kak-rasschitat</loc><lastmod>2026-04-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kakoy-trenazhor-luchshe-dlya-pokhudeniya</loc><lastmod>2026-04-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/treniruyus-no-ne-khudeyu-razbor-oshibok</loc><lastmod>2026-04-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/zhiroszhigayuschaya-trenirovka-dlya-zhenshhin</loc><lastmod>2026-04-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kak-ubrat-zhivot-posle-rodov</loc><lastmod>2026-04-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/intervalnoe-golodanie-i-trenirovki</loc><lastmod>2026-04-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/ves-stoit-na-meste-pri-trenirovkakh</loc><lastmod>2026-04-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/kardio-ili-silovye-dlya-pokhudeniya</loc><lastmod>2026-04-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fraufitness.ru/blog/skolko-kaloriy-szhigaet-trenirovka-v-zale</loc><lastmod>2026-03-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>
