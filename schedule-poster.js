@@ -22,11 +22,8 @@
     /* ── Чёрная шапка с логотипом ── */
     h += '<div class="ffp-head">';
     h += '<div class="ffp-brand">';
-    h += '<img class="ffp-logo" src="images/logo.png" alt="Frau Fitness" onerror="this.style.display=\'none\'">';
-    h += '<span class="ffp-brand-txt">';
-    h += '<span class="ffp-brand-name">FRAU<br>FITNESS</span>';
-    h += '<span class="ffp-brand-sub">Woman&nbsp;Club</span>';
-    h += '</span></div>';
+    h += '<img class="ffp-logo" src="images/schedule-logo.png" alt="Frau Fitness — Woman Club">';
+    h += '</div>';
     h += '<div class="ffp-title">';
     h += '<span class="ffp-title-main">Расписание<br>групповых занятий</span>';
     h += '<span class="ffp-period" data-edit="period">' + esc(period) + '</span>';

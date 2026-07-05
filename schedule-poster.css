@@ -26,41 +26,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2em;
-  padding: 2em 2.6em 2.4em 2.2em;
+  gap: 2.5em;
+  padding: 2.2em 2.8em 2.4em 2.4em;
 }
-.ffp-brand { display: flex; align-items: center; gap: 1.2em; min-width: 0; }
-.ffp-logo { width: 6.8em; height: auto; flex-shrink: 0; display: block; }
-.ffp-brand-txt { display: block; }
-.ffp-brand-name {
-  display: block;
-  font-family: 'Raleway', Arial, sans-serif;
-  font-weight: 900; font-style: italic;
-  font-size: 2.55em; line-height: 0.95;
-  letter-spacing: 0.02em; color: #ffffff;
-  text-transform: uppercase;
-}
-.ffp-brand-sub {
-  display: block;
-  font-family: 'Raleway', Arial, sans-serif;
-  font-weight: 700; font-style: italic;
-  font-size: 1em; letter-spacing: 0.42em;
-  color: #ffff00; text-transform: uppercase;
-  margin-top: 0.55em;
-}
-.ffp-title { flex-shrink: 0; }
+.ffp-brand { display: flex; align-items: center; min-width: 0; }
+.ffp-logo { width: 19em; max-width: 44%; height: auto; flex-shrink: 0; display: block; }
+.ffp-title { flex-shrink: 0; text-align: right; }
 .ffp-title-main {
   display: block;
   font-family: 'Raleway', Arial, sans-serif;
   font-weight: 300;
-  font-size: 2.75em; line-height: 1.1;
+  font-size: 2.9em; line-height: 1.08;
   color: #ffffff;
 }
 .ffp-period {
   display: block;
   font-family: 'Times New Roman', Georgia, serif;
-  font-size: 2.35em; line-height: 1.15;
-  color: #ffffff; margin-top: 0.12em;
+  font-size: 2.5em; line-height: 1.15;
+  color: #ffffff; margin-top: 0.15em;
 }
 
 /* ── Белое тело ── */

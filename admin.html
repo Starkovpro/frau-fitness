@@ -201,6 +201,7 @@ details.howto b { color: var(--white-80); font-weight: 600; }
   <!-- ══ Публикация ══ -->
   <div class="publish-bar">
     <button id="publishBtn" class="btn primary" onclick="publish()">Загрузить на сайт</button>
+    <button id="jpgBtn" class="btn ghost" onclick="downloadJpg()">Скачать JPG (текущий зал)</button>
     <button class="btn ghost" onclick="downloadJson()">Скачать schedule.json</button>
     <span id="dirtyFlag" class="dirty-flag" hidden>● есть незагруженные изменения</span>
     <span id="status"></span>
@@ -209,6 +210,7 @@ details.howto b { color: var(--white-80); font-weight: 600; }
 </main>
 
 <script src="schedule-poster.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 <script>
 /* ═══════════ НАСТРОЙКИ ═══════════ */
 const OWNER = 'Starkovpro';
@@ -593,6 +595,61 @@ function downloadJson() {
   a.click();
   a.remove();
   setStatus('Файл скачан. Загрузи его в папку data/ на GitHub (Add file → Upload files) — сайт обновится сам.', 'ok');
+}
+
+/* ═══════════ СКАЧАТЬ JPG-КАРТИНКУ АФИШИ ═══════════ */
+function slugifyHall(label, idx) {
+  const map = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'c','ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
+  let s = String(label || ('zal-' + (idx + 1))).toLowerCase().replace(/[а-яё]/g, function(c){ return map[c] || ''; });
+  s = s.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return s || ('zal-' + (idx + 1));
+}
+
+async function downloadJpg() {
+  if (typeof htmlToImage === 'undefined') {
+    setStatus('Библиотека для картинки не загрузилась (нет интернета?). Проверь соединение и обнови страницу.', 'err');
+    return;
+  }
+  const btn = document.getElementById('jpgBtn');
+  btn.disabled = true;
+  setStatus('Готовлю картинку…', '');
+
+  // Рендерим чистую афишу текущего зала в скрытый контейнер (без кнопок редактора)
+  const hall = data.halls[activeHall];
+  const stage = document.createElement('div');
+  stage.style.cssText = 'position:fixed;left:-99999px;top:0;width:1400px;background:#fff;z-index:-1;';
+  stage.innerHTML = FFPoster.render(hall, data.period);
+  document.body.appendChild(stage);
+
+  try {
+    // Ждём подгрузку логотипа внутри клона
+    const imgs = stage.querySelectorAll('img');
+    await Promise.all(Array.prototype.map.call(imgs, function(img) {
+      if (img.complete) return Promise.resolve();
+      return new Promise(function(res) { img.onload = img.onerror = res; });
+    }));
+    await new Promise(function(r){ setTimeout(r, 60); });
+
+    const node = stage.querySelector('.ffp');
+    const dataUrl = await htmlToImage.toJpeg(node, {
+      quality: 0.95,
+      pixelRatio: 2,
+      backgroundColor: '#ffffff',
+      cacheBust: true
+    });
+    const a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = 'raspisanie-' + slugifyHall(hall.label, activeHall) + '.jpg';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setStatus('Картинка «' + (hall.label || ('Зал ' + (activeHall + 1))) + '» скачана ✓', 'ok');
+  } catch (e) {
+    setStatus('Не удалось сделать картинку (' + (e && e.message ? e.message : 'ошибка') + '). Попробуй ещё раз.', 'err');
+  } finally {
+    stage.remove();
+    btn.disabled = false;
+  }
 }
 
 /* ═══════════ ЗАЩИТА ОТ ПОТЕРИ ИЗМЕНЕНИЙ ═══════════ */
