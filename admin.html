@@ -210,7 +210,7 @@ details.howto b { color: var(--white-80); font-weight: 600; }
 </main>
 
 <script src="schedule-poster.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+<script src="schedule-logo-data.js"></script>
 <script>
 /* ═══════════ НАСТРОЙКИ ═══════════ */
 const OWNER = 'Starkovpro';
@@ -387,6 +387,11 @@ function renderPoster() {
   const host = document.getElementById('posterHost');
   const hall = data.halls[activeHall];
   host.innerHTML = FFPoster.render(hall, data.period);
+  // Если открыто локально (file://) — путь к картинке не работает; ставим встроенный логотип
+  const logo = host.querySelector('.ffp-logo');
+  if (logo && window.FF_LOGO_DATA_URI) {
+    logo.onerror = function() { logo.src = window.FF_LOGO_DATA_URI; };
+  }
   enableEditing(host, hall);
   addRowControls(host, hall);
 }
@@ -605,49 +610,119 @@ function slugifyHall(label, idx) {
   return s || ('zal-' + (idx + 1));
 }
 
-async function downloadJpg() {
-  if (typeof htmlToImage === 'undefined') {
-    setStatus('Библиотека для картинки не загрузилась (нет интернета?). Проверь соединение и обнови страницу.', 'err');
-    return;
+/* Собираем весь применённый CSS постера в одну строку (для встраивания в SVG) */
+let _posterCssCache = null;
+function collectPosterCss() {
+  if (_posterCssCache !== null) return _posterCssCache;
+  let out = '';
+  for (let i = 0; i < document.styleSheets.length; i++) {
+    let rules;
+    try { rules = document.styleSheets[i].cssRules; } catch (e) { continue; }
+    if (!rules) continue;
+    for (let j = 0; j < rules.length; j++) {
+      const t = rules[j].cssText;
+      // берём только правила постера — остальное не нужно и мешает
+      if (t.indexOf('.ffp') !== -1) out += t + '\n';
+    }
   }
+  _posterCssCache = out;
+  return out;
+}
+
+/* data-URI логотипа: сначала встроенный (работает офлайн), иначе — грузим файл */
+async function getLogoDataUri() {
+  if (window.FF_LOGO_DATA_URI) return window.FF_LOGO_DATA_URI;
+  try {
+    const resp = await fetch('images/schedule-logo.png', { cache: 'force-cache' });
+    const blob = await resp.blob();
+    return await new Promise(function(res, rej) {
+      const r = new FileReader();
+      r.onload = function() { res(r.result); };
+      r.onerror = rej;
+      r.readAsDataURL(blob);
+    });
+  } catch (e) { return ''; }
+}
+
+async function downloadJpg() {
   const btn = document.getElementById('jpgBtn');
   btn.disabled = true;
   setStatus('Готовлю картинку…', '');
-
-  // Рендерим чистую афишу текущего зала в скрытый контейнер (без кнопок редактора)
-  const hall = data.halls[activeHall];
-  const stage = document.createElement('div');
-  stage.style.cssText = 'position:fixed;left:-99999px;top:0;width:1400px;background:#fff;z-index:-1;';
-  stage.innerHTML = FFPoster.render(hall, data.period);
-  document.body.appendChild(stage);
-
   try {
-    // Ждём подгрузку логотипа внутри клона
-    const imgs = stage.querySelectorAll('img');
-    await Promise.all(Array.prototype.map.call(imgs, function(img) {
-      if (img.complete) return Promise.resolve();
-      return new Promise(function(res) { img.onload = img.onerror = res; });
-    }));
-    await new Promise(function(r){ setTimeout(r, 60); });
+    const hall = data.halls[activeHall];
 
-    const node = stage.querySelector('.ffp');
-    const dataUrl = await htmlToImage.toJpeg(node, {
-      quality: 0.95,
-      pixelRatio: 2,
-      backgroundColor: '#ffffff',
-      cacheBust: true
+    // 1. Чистая разметка афиши (без кнопок редактора)
+    const holder = document.createElement('div');
+    holder.innerHTML = FFPoster.render(hall, data.period);
+    const poster = holder.querySelector('.ffp');
+
+    // 2. Логотип — как data-URI, чтобы SVG его увидел
+    const logoUri = await getLogoDataUri();
+    const logoImg = poster.querySelector('.ffp-logo');
+    if (logoImg) {
+      if (logoUri) logoImg.setAttribute('src', logoUri);
+      else logoImg.remove();
+    }
+
+    // 3. Размеры и вёрстка
+    const WIDTH = 1500;
+    const scope = document.createElement('div');
+    scope.className = 'ffp-scope';
+    scope.style.cssText = 'width:' + WIDTH + 'px;';
+    scope.appendChild(poster);
+
+    // измеряем реальную высоту во временном контейнере
+    const probe = document.createElement('div');
+    probe.style.cssText = 'position:fixed;left:-99999px;top:0;width:' + WIDTH + 'px;';
+    probe.appendChild(scope);
+    document.body.appendChild(probe);
+    // ждём применения шрифтов
+    if (document.fonts && document.fonts.ready) { try { await document.fonts.ready; } catch (e) {} }
+    await new Promise(function(r){ setTimeout(r, 50); });
+    const HEIGHT = Math.ceil(scope.getBoundingClientRect().height) || 1200;
+    document.body.removeChild(probe);
+
+    // 4. Оборачиваем в SVG foreignObject
+    const css = collectPosterCss();
+    const xhtml = new XMLSerializer().serializeToString(scope);
+    const svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="' + WIDTH + '" height="' + HEIGHT + '">' +
+      '<foreignObject width="100%" height="100%">' +
+      '<div xmlns="http://www.w3.org/1999/xhtml">' +
+      '<style>' + css + '</style>' + xhtml +
+      '</div></foreignObject></svg>';
+
+    // 5. SVG → Image → Canvas → JPEG
+    const svgUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    const img = new Image();
+    await new Promise(function(res, rej) {
+      img.onload = res;
+      img.onerror = function() { rej(new Error('render')); };
+      img.src = svgUrl;
     });
+
+    const SCALE = 2; // ретина-качество
+    const canvas = document.createElement('canvas');
+    canvas.width = WIDTH * SCALE;
+    canvas.height = HEIGHT * SCALE;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    const jpeg = canvas.toDataURL('image/jpeg', 0.95);
+    if (!jpeg || jpeg.length < 1000) throw new Error('empty');
+
     const a = document.createElement('a');
-    a.href = dataUrl;
+    a.href = jpeg;
     a.download = 'raspisanie-' + slugifyHall(hall.label, activeHall) + '.jpg';
     document.body.appendChild(a);
     a.click();
     a.remove();
     setStatus('Картинка «' + (hall.label || ('Зал ' + (activeHall + 1))) + '» скачана ✓', 'ok');
   } catch (e) {
-    setStatus('Не удалось сделать картинку (' + (e && e.message ? e.message : 'ошибка') + '). Попробуй ещё раз.', 'err');
+    setStatus('Не удалось сделать картинку в этом браузере. Открой админку с сайта (fraufitness.ru/admin) — там работает без сбоев. Ошибка: ' + (e && e.message ? e.message : 'неизвестно'), 'err');
   } finally {
-    stage.remove();
     btn.disabled = false;
   }
 }
