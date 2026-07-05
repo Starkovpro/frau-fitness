@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Расписание — админ-панель | Frau Fitness</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="schedule-poster.css">
+<style>
+:root {
+  --black: #0a0a0a; --black-2: #0f0f0f; --black-3: #161616; --black-card: #1a1a1a;
+  --yellow: #ffff00; --yellow-hover: #ffff44; --yellow-dim: #bfab00; --yellow-glow: rgba(255,255,0,0.10);
+  --white: #f5f1ea; --white-80: rgba(245,241,234,0.8);
+  --gray: #999; --gray-dark: #555;
+  --border: rgba(255,255,255,0.06); --border-yellow: rgba(255,255,0,0.12);
+  --radius: 16px; --radius-sm: 10px; --radius-xs: 6px; --radius-full: 50px;
+  --font: 'Raleway', sans-serif;
+  --shadow: 0 8px 32px rgba(0,0,0,0.3);
+  --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.06);
+  --green-ok: #7dd87d; --red: #ff6b6b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--black); color: var(--white); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+/* ── Шапка страницы ── */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.8rem 1.4rem;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.brand { display: flex; align-items: center; gap: 0.7rem; }
+.brand img { width: 34px; height: 34px; object-fit: contain; }
+.brand-name { font-weight: 900; font-style: italic; letter-spacing: 0.06em; font-size: 0.9rem; }
+.brand-sub { display: block; color: var(--gray); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.top-actions { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: flex-end; }
+.token-dot { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.7rem; color: var(--gray); white-space: nowrap; }
+.token-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--gray-dark); }
+.token-dot.ok { color: var(--green-ok); }
+.token-dot.ok::before { background: var(--green-ok); box-shadow: 0 0 8px rgba(125,216,125,0.6); }
+
+/* ── Кнопки ── */
+.btn {
+  font-family: var(--font); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.6rem 1.3rem; border-radius: var(--radius-full);
+  cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block;
+  border: 1px solid transparent; text-align: center;
+}
+.btn.primary { background: var(--yellow); color: var(--black); }
+.btn.primary:hover { background: var(--yellow-hover); box-shadow: 0 0 24px var(--yellow-glow); }
+.btn.primary:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+.btn.ghost { background: transparent; color: var(--gray); border-color: var(--border); }
+.btn.ghost:hover { color: var(--yellow); border-color: var(--yellow); }
+.btn.small { padding: 0.4rem 0.9rem; font-size: 0.62rem; }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 1.4rem 1.2rem 6rem; }
+.card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 1.4rem; margin-bottom: 1.4rem; }
+h1 { font-size: 1.35rem; font-weight: 900; font-style: italic; margin-bottom: 0.35rem; }
+h2 { font-size: 0.95rem; font-weight: 800; font-style: italic; margin-bottom: 0.9rem; }
+.hint { color: var(--gray); font-size: 0.82rem; line-height: 1.55; }
+.hint a { color: var(--yellow); }
+.hint b { color: var(--white-80); font-weight: 600; }
+.hint code { background: var(--black-3); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.76rem; color: var(--white-80); }
+
+/* ── Панель токена ── */
+.token-panel { border-color: var(--border-yellow); }
+.token-row { display: flex; gap: 0.6rem; margin: 1rem 0 0.4rem; flex-wrap: wrap; }
+.token-row input {
+  flex: 1; min-width: 220px;
+  background: var(--black-3); border: 1px solid var(--border); border-radius: var(--radius-xs);
+  color: var(--white); font-family: monospace; font-size: 0.8rem; padding: 0.6rem 0.8rem;
+}
+.token-row input:focus { outline: none; border-color: var(--yellow-dim); }
+details.howto { margin-top: 0.9rem; }
+details.howto summary { cursor: pointer; color: var(--yellow); font-size: 0.8rem; font-weight: 600; }
+details.howto ol { margin: 0.8rem 0 0 1.2rem; color: var(--gray); font-size: 0.82rem; line-height: 1.7; }
+details.howto b { color: var(--white-80); font-weight: 600; }
+
+/* ── Табы залов ── */
+.hall-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.sched-tab {
+  background: transparent; color: var(--gray); border: 1px solid var(--border);
+  padding: 0.5rem 1.5rem; border-radius: var(--radius-xs);
+  font-family: var(--font); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;
+}
+.sched-tab.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+.sched-tab:not(.active):hover { border-color: var(--yellow); color: var(--yellow); }
+
+/* ── Постер-редактор ── */
+.poster-host { overflow-x: auto; border-radius: var(--radius-sm); background: #fff; }
+.poster-host .ffp-scope { min-width: 780px; }
+
+/* подсветка редактируемого текста */
+.poster-host .ffp [data-edit] { cursor: text; border-radius: 0.2em; transition: background 0.15s, box-shadow 0.15s; }
+.poster-host .ffp-body [data-edit]:hover { box-shadow: 0 0 0 0.16em rgba(0,0,0,0.3); }
+.poster-host .ffp-head [data-edit]:hover { box-shadow: 0 0 0 0.16em rgba(255,255,0,0.6); }
+.poster-host .ffp [data-edit]:focus { outline: none; background: rgba(255,255,0,0.28); box-shadow: 0 0 0 0.16em #d8c800; }
+.poster-host .ffp-head [data-edit]:focus { background: rgba(255,255,0,0.18); box-shadow: 0 0 0 0.16em var(--yellow); }
+.poster-host .ffp-name { min-height: 1.2em; }
+.poster-host .ffp-trainer { min-width: 1.5em; display: inline-block; min-height: 1em; }
+.poster-host .ffp-tr-empty { display: block; opacity: 0.3; }   /* пустой тренер виден в админке */
+.poster-host .ffp-time { min-height: 1.3em; }
+
+/* колонка управления строками (только в админке) */
+.ffp-rowctl {
+  border: none !important; background: #fff;
+  width: 6em; padding: 0.2em 0 0.2em 0.5em !important;
+  vertical-align: middle; white-space: nowrap; text-align: left;
+}
+.rc-btn {
+  width: 1.7em; height: 1.7em; margin-right: 0.22em;
+  border: 0.09em solid #bbb; border-radius: 0.3em; background: #fff;
+  color: #777; font-size: 1em; line-height: 1; cursor: pointer; transition: all 0.2s;
+  font-family: Arial, sans-serif;
+}
+.rc-btn:hover { border-color: #000; color: #000; }
+.rc-btn.rc-del:hover { border-color: #c00; color: #c00; }
+
+.poster-tools { display: flex; gap: 0.6rem; margin-top: 0.9rem; flex-wrap: wrap; }
+
+/* ── Панель публикации ── */
+.publish-bar {
+  position: sticky; bottom: 0.8rem; z-index: 40;
+  display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+  background: rgba(15,15,15,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.85rem 1.1rem; margin-top: 1.2rem; box-shadow: var(--shadow);
+}
+#status { font-size: 0.78rem; color: var(--gray); flex: 1; min-width: 200px; line-height: 1.45; }
+#status.ok { color: var(--green-ok); }
+#status.err { color: var(--red); }
+.dirty-flag { color: var(--yellow); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; }
+
+@media (max-width: 640px) {
+  .wrap { padding: 1rem 0.7rem 6rem; }
+  .card { padding: 1rem; }
+  .brand-name { font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="images/logo.png" alt="Frau Fitness" onerror="this.style.display='none'">
+    <div>
+      <span class="brand-name">FRAU FITNESS</span>
+      <span class="brand-sub">Админ-панель расписания</span>
+    </div>
+  </div>
+  <div class="top-actions">
+    <span id="tokenState" class="token-dot">токен не задан</span>
+    <button class="btn ghost small" onclick="toggleTokenPanel()">Токен GitHub</button>
+    <a class="btn ghost small" href="/#schedule" target="_blank" rel="noopener">Открыть сайт ↗</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ══ Настройка токена ══ -->
+  <section id="tokenPanel" class="card token-panel" hidden>
+    <h2>Токен GitHub</h2>
+    <p class="hint">Токен нужен, чтобы кнопка «Загрузить на сайт» могла сохранить расписание в репозиторий <code>Starkovpro/frau-fitness</code> — дальше Vercel сам обновит сайт за минуту. Токен хранится <b>только в этом браузере</b>.</p>
+    <div class="token-row">
+      <input id="tokenInput" type="password" placeholder="github_pat_..." autocomplete="off">
+      <button class="btn primary small" onclick="saveToken()">Сохранить</button>
+      <button class="btn ghost small" onclick="clearToken()">Удалить</button>
+    </div>
+    <details class="howto">
+      <summary>Как получить токен (один раз, ~3 минуты)</summary>
+      <ol>
+        <li>GitHub → аватар → <b>Settings</b></li>
+        <li>Внизу слева: <b>Developer settings</b> → <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b></li>
+        <li>Token name: <b>frau-fitness-admin</b>. Expiration: максимум</li>
+        <li>Repository access: <b>Only select repositories</b> → выбери <b>frau-fitness</b></li>
+        <li>Permissions → Repository permissions → <b>Contents</b> → <b>Read and write</b></li>
+        <li>Нажми <b>Generate token</b>, скопируй и вставь в поле выше</li>
+      </ol>
+    </details>
+  </section>
+
+  <!-- ══ Редактор-афиша ══ -->
+  <section class="card">
+    <h1>Расписание занятий</h1>
+    <p class="hint" style="margin-bottom:1.1rem;">Кликни на любой текст прямо на афише — время, название занятия, тренера, период дат или название зала — и просто печатай. Кнопками <b>↑ ↓ ×</b> справа можно двигать и удалять строки времени. Когда всё готово — нажми <b>«Загрузить на сайт»</b>.</p>
+    <div class="hall-tabs" id="hallTabs"></div>
+    <div class="poster-host" id="posterHost"></div>
+    <div class="poster-tools">
+      <button class="btn ghost small" onclick="addRow()">+ Добавить строку времени</button>
+    </div>
+  </section>
+
+  <!-- ══ Публикация ══ -->
+  <div class="publish-bar">
+    <button id="publishBtn" class="btn primary" onclick="publish()">Загрузить на сайт</button>
+    <button class="btn ghost" onclick="downloadJson()">Скачать schedule.json</button>
+    <span id="dirtyFlag" class="dirty-flag" hidden>● есть незагруженные изменения</span>
+    <span id="status"></span>
+  </div>
+
+</main>
+
+<script src="schedule-poster.js"></script>
+<script>
+/* ═══════════ НАСТРОЙКИ ═══════════ */
+const OWNER = 'Starkovpro';
+const REPO = 'frau-fitness';
+const FILE_PATH = 'data/schedule.json';
+const BRANCH = 'main';
+const API_URL = 'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + FILE_PATH;
+const TOKEN_KEY = 'ff_gh_token';
+
+const STD_TIMES = ['10.00-10.55','11.00-11.55','12.00-12.55','13.00-13.55','14.00-14.55','17.00-17.55','18.00-18.55','19.15-20.10','20.15-21.10'];
+
+function emptyRow(time) {
+  const cells = [];
+  for (let i = 0; i < 7; i++) cells.push({ n: '', tr: '' });
+  return { time: time || '', cells: cells };
+}
+function defaultData() {
+  return {
+    updated: '',
+    period: 'с 29 июня по 5 июля',
+    halls: [
+      { id: 'green',  label: 'Зал 1 (Зелёный)', rows: STD_TIMES.map(emptyRow) },
+      { id: 'yellow', label: 'Зал 2 (Жёлтый)',  rows: STD_TIMES.map(emptyRow) }
+    ]
+  };
+}
+
+/* ═══════════ СОСТОЯНИЕ ═══════════ */
+let data = null;
+let fileSha = null;
+let activeHall = 0;
+let dirty = false;
+
+/* ═══════════ УТИЛИТЫ ═══════════ */
+function b64EncodeUtf8(str) {
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  bytes.forEach(function(b) { bin += String.fromCharCode(b); });
+  return btoa(bin);
+}
+function b64DecodeUtf8(b64) {
+  const bin = atob(String(b64).replace(/\s/g, ''));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
+function setStatus(msg, cls) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = cls || '';
+}
+function markDirty() { dirty = true; document.getElementById('dirtyFlag').hidden = false; }
+function markClean() { dirty = false; document.getElementById('dirtyFlag').hidden = true; }
+
+/* Приведение данных к формату-сетке (в т.ч. миграция со старого формата по дням) */
+function normalizeData(d) {
+  const def = defaultData();
+  if (!d || !Array.isArray(d.halls) || !d.halls.length) return def;
+  const out = { updated: d.updated || '', period: typeof d.period === 'string' ? d.period : '', halls: [] };
+  const DAY_KEYS = ['mon','tue','wed','thu','fri','sat','sun'];
+  for (let i = 0; i < 2; i++) {
+    const src = d.halls[i];
+    if (!src) { out.halls.push(def.halls[i]); continue; }
+    let hall = { id: src.id || def.halls[i].id, label: src.label || src.name || def.halls[i].label, rows: [] };
+    if (Array.isArray(src.rows)) {
+      src.rows.forEach(function(r) {
+        const row = emptyRow(r && r.time ? String(r.time) : '');
+        if (r && Array.isArray(r.cells)) {
+          for (let c = 0; c < 7; c++) {
+            const cell = r.cells[c] || {};
+            row.cells[c] = { n: cell.n ? String(cell.n) : '', tr: cell.tr ? String(cell.tr) : '' };
+          }
+        }
+        hall.rows.push(row);
+      });
+    } else if (src.days) {
+      /* старый формат: days.mon = [{t,n}] */
+      const times = [];
+      DAY_KEYS.forEach(function(k) {
+        (src.days[k] || []).forEach(function(it) {
+          if (it.t && times.indexOf(it.t) === -1) times.push(it.t);
+        });
+      });
+      times.sort();
+      times.forEach(function(t) {
+        const row = emptyRow(t);
+        DAY_KEYS.forEach(function(k, di) {
+          const found = (src.days[k] || []).filter(function(it) { return it.t === t && it.n; });
+          if (found.length) row.cells[di] = { n: found.map(function(it){ return it.n; }).join(' + '), tr: '' };
+        });
+        hall.rows.push(row);
+      });
+    }
+    if (!hall.rows.length) hall.rows = STD_TIMES.map(emptyRow);
+    out.halls.push(hall);
+  }
+  return out;
+}
+
+/* ═══════════ ТОКЕН ═══════════ */
+function refreshTokenState() {
+  const el = document.getElementById('tokenState');
+  if (getToken()) { el.textContent = 'токен сохранён'; el.classList.add('ok'); }
+  else { el.textContent = 'токен не задан'; el.classList.remove('ok'); }
+}
+function toggleTokenPanel() {
+  const p = document.getElementById('tokenPanel');
+  p.hidden = !p.hidden;
+  if (!p.hidden) document.getElementById('tokenInput').focus();
+}
+function saveToken() {
+  const v = document.getElementById('tokenInput').value.trim();
+  if (!v) { setStatus('Вставь токен в поле, затем нажми «Сохранить».', 'err'); return; }
+  localStorage.setItem(TOKEN_KEY, v);
+  document.getElementById('tokenInput').value = '';
+  document.getElementById('tokenPanel').hidden = true;
+  refreshTokenState();
+  setStatus('Токен сохранён в этом браузере. Кнопка «Загрузить на сайт» готова к работе.', 'ok');
+}
+function clearToken() {
+  localStorage.removeItem(TOKEN_KEY);
+  refreshTokenState();
+  setStatus('Токен удалён из браузера.', '');
+}
+
+/* ═══════════ ЗАГРУЗКА ДАННЫХ ═══════════ */
+async function ghGet() {
+  const resp = await fetch(API_URL + '?ref=' + BRANCH, {
+    headers: {
+      'Authorization': 'Bearer ' + getToken(),
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    },
+    cache: 'no-store'
+  });
+  if (resp.status === 404) { fileSha = null; return null; }
+  if (!resp.ok) throw new Error('GitHub: ' + resp.status);
+  const json = await resp.json();
+  fileSha = json.sha;
+  return JSON.parse(b64DecodeUtf8(json.content));
+}
+async function siteGet() {
+  const resp = await fetch('data/schedule.json?ts=' + Date.now(), { cache: 'no-store' });
+  if (!resp.ok) throw new Error('site: ' + resp.status);
+  return resp.json();
+}
+async function loadInitial() {
+  setStatus('Загружаю расписание…', '');
+  let loaded = null;
+  if (getToken()) { try { loaded = await ghGet(); } catch (e) { loaded = null; } }
+  if (!loaded)    { try { loaded = await siteGet(); } catch (e) { loaded = null; } }
+  data = normalizeData(loaded);
+  renderTabs();
+  renderPoster();
+  setStatus(loaded ? 'Расписание загружено — кликай на текст афиши и редактируй.' : 'Начинаем с пустой афиши — заполни занятия и загрузи на сайт.', '');
+}
+
+/* ═══════════ ТАБЫ ═══════════ */
+function renderTabs() {
+  const tabs = document.getElementById('hallTabs');
+  tabs.innerHTML = '';
+  data.halls.forEach(function(h, i) {
+    const b = document.createElement('button');
+    b.className = 'sched-tab' + (i === activeHall ? ' active' : '');
+    b.textContent = h.label || ('Зал ' + (i + 1));
+    b.onclick = function() { activeHall = i; renderTabs(); renderPoster(); };
+    tabs.appendChild(b);
+  });
+}
+
+/* ═══════════ АФИША-РЕДАКТОР ═══════════ */
+function renderPoster() {
+  const host = document.getElementById('posterHost');
+  const hall = data.halls[activeHall];
+  host.innerHTML = FFPoster.render(hall, data.period);
+  enableEditing(host, hall);
+  addRowControls(host, hall);
+}
+
+function placeCaretEnd(el) {
+  const r = document.createRange();
+  r.selectNodeContents(el);
+  r.collapse(false);
+  const s = window.getSelection();
+  s.removeAllRanges();
+  s.addRange(r);
+}
+
+function enableEditing(host, hall) {
+  host.querySelectorAll('[data-edit]').forEach(function(el) {
+    try { el.contentEditable = 'plaintext-only'; } catch (e) { el.contentEditable = 'true'; }
+    if (el.contentEditable !== 'plaintext-only') el.contentEditable = 'true';
+    el.spellcheck = false;
+
+    el.addEventListener('paste', function(e) {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, text.replace(/\s*\n\s*/g, ' '));
+    });
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+    });
+    el.addEventListener('input', function() {
+      const val = el.textContent.replace(/\n/g, ' ');
+      const kind = el.getAttribute('data-edit');
+      const ri = parseInt(el.getAttribute('data-row'), 10);
+      const di = parseInt(el.getAttribute('data-day'), 10);
+      if (kind === 'period') { data.period = val; }
+      else if (kind === 'label') { hall.label = val; renderTabsSoft(); }
+      else if (kind === 'time') { hall.rows[ri].time = val; }
+      else if (kind === 'n')  { hall.rows[ri].cells[di].n = val; }
+      else if (kind === 'tr') {
+        hall.rows[ri].cells[di].tr = val;
+        const wrap = el.closest('.ffp-tr');
+        if (wrap) wrap.classList.toggle('ffp-tr-empty', !val.trim());
+      }
+      markDirty();
+    });
+  });
+
+  /* клик по пустой части ячейки — фокус в название занятия */
+  host.querySelectorAll('td.ffp-cell').forEach(function(td) {
+    td.addEventListener('mousedown', function(e) {
+      if (e.target === td) {
+        e.preventDefault();
+        const name = td.querySelector('.ffp-name');
+        if (name) { name.focus(); placeCaretEnd(name); }
+      }
+    });
+  });
+}
+
+function renderTabsSoft() {
+  const btns = document.querySelectorAll('#hallTabs .sched-tab');
+  data.halls.forEach(function(h, i) {
+    if (btns[i]) btns[i].textContent = h.label || ('Зал ' + (i + 1));
+  });
+}
+
+function addRowControls(host, hall) {
+  const headRow = host.querySelector('.ffp-table thead tr');
+  if (headRow) {
+    const th = document.createElement('th');
+    th.className = 'ffp-rowctl';
+    headRow.appendChild(th);
+  }
+  host.querySelectorAll('.ffp-table tbody tr').forEach(function(tr) {
+    const ri = parseInt(tr.getAttribute('data-row'), 10);
+    const td = document.createElement('td');
+    td.className = 'ffp-rowctl';
+    td.innerHTML =
+      '<button type="button" class="rc-btn" title="Переместить строку вверх">↑</button>' +
+      '<button type="button" class="rc-btn" title="Переместить строку вниз">↓</button>' +
+      '<button type="button" class="rc-btn rc-del" title="Удалить строку">×</button>';
+    const btns = td.querySelectorAll('button');
+    btns[0].onclick = function() { moveRow(hall, ri, -1); };
+    btns[1].onclick = function() { moveRow(hall, ri, 1); };
+    btns[2].onclick = function() { deleteRow(hall, ri); };
+    tr.appendChild(td);
+  });
+}
+
+function moveRow(hall, ri, dir) {
+  const j = ri + dir;
+  if (j < 0 || j >= hall.rows.length) return;
+  const tmp = hall.rows[ri];
+  hall.rows[ri] = hall.rows[j];
+  hall.rows[j] = tmp;
+  markDirty(); renderPoster();
+}
+function deleteRow(hall, ri) {
+  const row = hall.rows[ri];
+  const hasContent = row.cells.some(function(c) { return (c.n && c.n.trim()) || (c.tr && c.tr.trim()); });
+  if (hasContent && !confirm('В этой строке есть занятия. Удалить строку «' + (row.time || 'без времени') + '»?')) return;
+  hall.rows.splice(ri, 1);
+  markDirty(); renderPoster();
+}
+function addRow() {
+  const hall = data.halls[activeHall];
+  hall.rows.push(emptyRow(''));
+  markDirty(); renderPoster();
+  const times = document.querySelectorAll('#posterHost .ffp-time');
+  const last = times[times.length - 1];
+  if (last) { last.focus(); placeCaretEnd(last); }
+}
+
+/* ═══════════ ПОДГОТОВКА К СОХРАНЕНИЮ ═══════════ */
+function cleanForSave() {
+  const copy = JSON.parse(JSON.stringify(data));
+  const problems = [];
+  copy.period = String(copy.period || '').trim();
+  copy.halls.forEach(function(h, hi) {
+    h.label = String(h.label || '').trim();
+    h.rows = h.rows.filter(function(row) {
+      row.time = String(row.time || '').trim();
+      row.cells.forEach(function(c) { c.n = String(c.n || '').trim(); c.tr = String(c.tr || '').trim(); });
+      const hasContent = row.cells.some(function(c) { return c.n || c.tr; });
+      if (!row.time && hasContent) problems.push((hi + 1) + '-й зал: строка с занятиями без времени');
+      return row.time || hasContent;   /* полностью пустые строки не сохраняем */
+    });
+  });
+  copy.updated = new Date().toISOString().slice(0, 10);
+  return { copy: copy, problems: problems };
+}
+
+/* ═══════════ ПУБЛИКАЦИЯ ═══════════ */
+async function ghGetShaOnly() {
+  const resp = await fetch(API_URL + '?ref=' + BRANCH, {
+    headers: {
+      'Authorization': 'Bearer ' + getToken(),
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    },
+    cache: 'no-store'
+  });
+  if (resp.status === 404) { fileSha = null; return; }
+  if (!resp.ok) throw new Error('GitHub: ' + resp.status);
+  const json = await resp.json();
+  fileSha = json.sha;
+}
+
+async function publish() {
+  if (!getToken()) {
+    document.getElementById('tokenPanel').hidden = false;
+    setStatus('Сначала добавь токен GitHub — инструкция в панели выше.', 'err');
+    return;
+  }
+  const prep = cleanForSave();
+  if (prep.problems.length) {
+    setStatus('Заполни время: ' + prep.problems[0] + (prep.problems.length > 1 ? ' (и ещё ' + (prep.problems.length - 1) + ')' : '') + '.', 'err');
+    return;
+  }
+  const btn = document.getElementById('publishBtn');
+  btn.disabled = true;
+  setStatus('Сохраняю в GitHub…', '');
+  try {
+    try { await ghGetShaOnly(); } catch (e) { /* 404 = файла ещё нет, создадим */ }
+    const body = {
+      message: 'Обновление расписания через админ-панель',
+      content: b64EncodeUtf8(JSON.stringify(prep.copy, null, 2) + '\n'),
+      branch: BRANCH
+    };
+    if (fileSha) body.sha = fileSha;
+    const resp = await fetch(API_URL, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + getToken(),
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    if (resp.status === 401 || resp.status === 403) throw new Error('auth');
+    if (!resp.ok) throw new Error('http ' + resp.status);
+    const json = await resp.json();
+    fileSha = json.content && json.content.sha ? json.content.sha : fileSha;
+    data = normalizeData(prep.copy);
+    renderTabs(); renderPoster();
+    markClean();
+    setStatus('Загружено ✓ Vercel обновит сайт в течение минуты. Если на сайте старое расписание — обнови страницу (Ctrl+Shift+R).', 'ok');
+  } catch (e) {
+    if (e && e.message === 'auth') {
+      setStatus('GitHub не принял токен (просрочен или нет права Contents: Read and write). Создай новый токен и сохрани его заново.', 'err');
+    } else {
+      setStatus('Не получилось сохранить (' + (e && e.message ? e.message : 'сеть') + '). Попробуй ещё раз — или нажми «Скачать schedule.json» и загрузи файл в папку data/ на GitHub вручную.', 'err');
+    }
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+/* ═══════════ СКАЧАТЬ ФАЙЛ (запасной путь без токена) ═══════════ */
+function downloadJson() {
+  const prep = cleanForSave();
+  const blob = new Blob([JSON.stringify(prep.copy, null, 2) + '\n'], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'schedule.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setStatus('Файл скачан. Загрузи его в папку data/ на GitHub (Add file → Upload files) — сайт обновится сам.', 'ok');
+}
+
+/* ═══════════ ЗАЩИТА ОТ ПОТЕРИ ИЗМЕНЕНИЙ ═══════════ */
+window.addEventListener('beforeunload', function(e) {
+  if (dirty) { e.preventDefault(); e.returnValue = ''; }
+});
+
+/* ═══════════ СТАРТ ═══════════ */
+refreshTokenState();
+loadInitial();
+</script>
+</body>
+</html>

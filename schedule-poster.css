@@ -1,0 +1,116 @@
+/* ═══════════════════════════════════════════════════════════════
+   Frau Fitness — стили постера расписания (сайт + админка)
+   Вид повторяет PNG-макеты: чёрная шапка, белая таблица.
+   Постер масштабируется как картинка: все размеры в em,
+   базовый размер шрифта зависит от ширины контейнера (cqw).
+   ═══════════════════════════════════════════════════════════════ */
+
+.ffp-scope { width: 100%; }
+.ffp {
+  font-size: 10px;               /* запасной размер для старых браузеров */
+  background: #ffffff;
+  color: #000000;
+  line-height: 1.2;
+  text-align: left;
+}
+@supports (width: 1cqw) {
+  .ffp-scope { container-type: inline-size; }
+  .ffp { font-size: clamp(4.5px, 1.5cqw, 19px); }
+}
+.ffp, .ffp * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Чёрная шапка ── */
+.ffp-head {
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+  padding: 2em 2.6em 2.4em 2.2em;
+}
+.ffp-brand { display: flex; align-items: center; gap: 1.2em; min-width: 0; }
+.ffp-logo { width: 6.8em; height: auto; flex-shrink: 0; display: block; }
+.ffp-brand-txt { display: block; }
+.ffp-brand-name {
+  display: block;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-weight: 900; font-style: italic;
+  font-size: 2.55em; line-height: 0.95;
+  letter-spacing: 0.02em; color: #ffffff;
+  text-transform: uppercase;
+}
+.ffp-brand-sub {
+  display: block;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-weight: 700; font-style: italic;
+  font-size: 1em; letter-spacing: 0.42em;
+  color: #ffff00; text-transform: uppercase;
+  margin-top: 0.55em;
+}
+.ffp-title { flex-shrink: 0; }
+.ffp-title-main {
+  display: block;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 2.75em; line-height: 1.1;
+  color: #ffffff;
+}
+.ffp-period {
+  display: block;
+  font-family: 'Times New Roman', Georgia, serif;
+  font-size: 2.35em; line-height: 1.15;
+  color: #ffffff; margin-top: 0.12em;
+}
+
+/* ── Белое тело ── */
+.ffp-body { background: #ffffff; padding: 1.6em 2.2em 2.2em; }
+.ffp-hall {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700; font-size: 1.65em;
+  margin: 0 0 0.55em 0.1em; color: #000;
+}
+
+/* ── Таблица ── */
+.ffp-table { width: 100%; border-collapse: collapse; table-layout: fixed; background: #fff; }
+.ffp-table th, .ffp-table td { border: 0.09em solid #000; }
+.ffp-table thead th {
+  background: #e9e9e9;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400; font-size: 1.05em;
+  color: #000; text-align: center;
+  padding: 0.55em 0.2em;
+}
+.ffp-th-time { width: 13.5%; background: #ffffff !important; }
+.ffp-time {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700; font-size: 1.12em;
+  text-align: center; vertical-align: middle;
+  padding: 0.4em 0.15em; white-space: nowrap;
+}
+.ffp-cell {
+  text-align: center; vertical-align: middle;
+  padding: 0.6em 0.22em;
+  height: 4.7em;                  /* работает как min-height для td */
+  word-break: break-word;
+}
+.ffp-name {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700; font-size: 1.08em; line-height: 1.15;
+  color: #000;
+}
+.ffp-tr {
+  display: block;
+  font-family: 'Times New Roman', Georgia, serif;
+  font-size: 0.98em; line-height: 1.15;
+  color: #000; margin-top: 0.18em;
+}
+.ffp-trainer { font-family: inherit; }
+.ffp-tr-empty { display: none; }   /* пустой тренер на сайте не показывается */
+
+/* Узкие экраны: постер и так масштабируется, ограничиваем минимум */
+@media (max-width: 480px) {
+  .ffp-head { padding: 1.6em 1.6em 1.9em 1.4em; }
+  .ffp-body { padding: 1.2em 1.2em 1.6em; }
+}

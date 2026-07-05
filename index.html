@@ -723,6 +723,8 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
   ]
 }
 </script>
+<link rel="stylesheet" href="schedule-poster.css">
+<script src="schedule-poster.js"></script>
 </head>
 <body>
 
@@ -801,28 +803,15 @@ footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid var(--border); }
       <h2 class="section-title">Групповые <em>занятия</em></h2>
     </div>
     <p class="anim" style="color:var(--gray);font-size:0.88rem;margin-bottom:2rem;">Расписание обновляется еженедельно. Для записи на занятие позвоните нам.</p>
-    <!-- Расписание подтягивается из Google Таблицы автоматически -->
-    <div class="schedule-tabs anim" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;">
-      <button class="sched-tab active" onclick="showHall(0)" style="background:var(--yellow);color:var(--black);border:none;padding:0.5rem 1.5rem;border-radius:var(--radius-xs);font-family:var(--font);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;">Зелёный зал</button>
-      <button class="sched-tab" onclick="showHall(1)" style="background:transparent;color:var(--gray);border:1px solid var(--border);padding:0.5rem 1.5rem;border-radius:var(--radius-xs);font-family:var(--font);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;">Оранжевый зал</button>
-    </div>
-    <div id="schedule-container" class="anim" style="overflow-x:auto;">
-      <div id="hall-0" class="hall-schedule"></div>
-      <div id="hall-1" class="hall-schedule" style="display:none;"></div>
-      <p id="sched-fallback" style="display:none;text-align:center;color:var(--gray);font-size:0.85rem;padding:2rem;">Расписание загружается... Если таблица не отображается — <a href="tel:88512272027" style="color:var(--yellow);">позвоните нам</a>.</p>
-    </div>
-    <!-- Fallback: PNG images if Google Sheets not configured -->
-    <div id="schedule-images-fallback" class="schedule-images anim">
-      <div class="schedule-img-wrap">
-        <img src="images/schedule-1.png" alt="Расписание Frau Fitness — Зелёный зал" loading="lazy">
+    <!-- Расписание рисуется из data/schedule.json — редактор: fraufitness.ru/admin
+         Пока данные не загрузились (или файла нет) — остаются PNG-картинки. -->
+    <div class="schedule-images anim">
+      <div class="schedule-img-wrap" id="sched-poster-0">
+        <img src="images/schedule-2.png" alt="Расписание Frau Fitness — Зал 1 (Зелёный)" loading="lazy">
       </div>
-      <div class="schedule-img-wrap">
-        <img src="images/schedule-2.png" alt="Расписание Frau Fitness — Оранжевый зал" loading="lazy">
+      <div class="schedule-img-wrap" id="sched-poster-1">
+        <img src="images/schedule-1.png" alt="Расписание Frau Fitness — Зал 2 (Жёлтый)" loading="lazy">
       </div>
-    </div>
-    <div style="text-align:center;margin-top:2rem;" class="anim">
-      <a href="tel:88512272027" class="btn btn-y">📞 Записаться на занятие</a>
-      <a href="classes.html" class="btn btn-o" style="margin-left:0.5rem;">Описание групповых занятий →</a>
     </div>
   </div>
 </section>
@@ -1144,81 +1133,22 @@ document.getElementById('privacyModal').addEventListener('click', function(e) {
   if (e.target === this) this.style.display = 'none';
 });
 
-// === Google Sheets Schedule ===
-// ИНСТРУКЦИЯ: Замените URL ниже на ваши ссылки из Google Sheets (Файл → Опубликовать → CSV)
-const SHEET_URLS = [
-  '', // URL для Зелёного зала (Лист 1)
-  ''  // URL для Оранжевого зала (Лист 2)
-];
-
-function parseCSV(text) {
-  return text.trim().split('\n').map(row => {
-    const cells = []; let current = ''; let inQuotes = false;
-    for (let c of row) {
-      if (c === '"') { inQuotes = !inQuotes; }
-      else if (c === ',' && !inQuotes) { cells.push(current.trim()); current = ''; }
-      else { current += c; }
-    }
-    cells.push(current.trim());
-    return cells;
-  });
-}
-
-function renderTable(data) {
-  if (!data || data.length < 2) return '<p style="color:var(--gray);text-align:center;">Нет данных</p>';
-  let html = '<table class="sched-table"><tr>';
-  data[0].forEach(h => { html += '<th>' + h + '</th>'; });
-  html += '</tr>';
-  for (let i = 1; i < data.length; i++) {
-    html += '<tr>';
-    data[i].forEach(cell => { html += '<td>' + (cell || '') + '</td>'; });
-    html += '</tr>';
-  }
-  return html + '</table>';
-}
-
-async function loadSchedule(hallIdx) {
-  const url = SHEET_URLS[hallIdx];
-  if (!url) return null;
-  try {
-    const resp = await fetch(url);
-    if (!resp.ok) return null;
-    const text = await resp.text();
-    return parseCSV(text);
-  } catch(e) { return null; }
-}
-
-const schedData = [null, null];
+// === Расписание: HTML-афиши из data/schedule.json (редактор — /admin) ===
 async function initSchedule() {
-  let anyLoaded = false;
-  for (let i = 0; i < 2; i++) {
-    if (SHEET_URLS[i]) {
-      schedData[i] = await loadSchedule(i);
-      if (schedData[i]) {
-        document.getElementById('hall-' + i).innerHTML = renderTable(schedData[i]);
-        anyLoaded = true;
+  try {
+    const resp = await fetch('data/schedule.json?v=' + Date.now(), { cache: 'no-store' });
+    if (!resp.ok) throw new Error('нет данных');
+    const json = await resp.json();
+    const halls = Array.isArray(json.halls) ? json.halls : [];
+    for (let i = 0; i < 2; i++) {
+      const slot = document.getElementById('sched-poster-' + i);
+      const hall = halls[i];
+      if (slot && hall && Array.isArray(hall.rows) && hall.rows.length && window.FFPoster) {
+        slot.innerHTML = FFPoster.render(hall, json.period || '');
       }
     }
-  }
-  const fb = document.getElementById('schedule-images-fallback');
-  const tabs = document.querySelector('.schedule-tabs');
-  const cont = document.getElementById('schedule-container');
-  if (anyLoaded) {
-    if (fb) fb.style.display = 'none';
-    if (tabs) tabs.style.display = 'flex';
-  } else {
-    // Show PNG fallback, hide tabs
-    if (tabs) tabs.style.display = 'none';
-    if (cont) cont.style.display = 'none';
-    if (fb) fb.style.display = 'grid';
-  }
+  } catch (e) { /* остаются PNG-картинки как запасной вариант */ }
 }
-
-function showHall(idx) {
-  document.querySelectorAll('.hall-schedule').forEach((el,i) => { el.style.display = i === idx ? 'block' : 'none'; });
-  document.querySelectorAll('.sched-tab').forEach((btn,i) => { btn.classList.toggle('active', i === idx); });
-}
-
 initSchedule();
 // === Автозагрузка 2 новейших статей из articles.json ===
 fetch('blog/articles.json')
