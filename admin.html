@@ -598,13 +598,12 @@ function applyLogoFallback(host) {
   }
   // если картинка не загрузилась — подставить встроенную
   logo.onerror = useEmbedded;
-  // если картинка уже «сломана» к этому моменту — тоже
-  if (logo.complete && logo.naturalWidth === 0) useEmbedded();
-  // если встроенный лого догрузится позже (defer) и картинки нет — подставить
+  // В админке встроенная копия — ОСНОВНОЙ источник: не зависит от сети и кэша
+  // (битая копия в кэше браузера может отрисоваться «огрызком» без onerror)
+  useEmbedded();
+  // если встроенный лого догрузится позже (defer) — подставить в любом случае
   window.__ffLogoWaiters = window.__ffLogoWaiters || [];
-  window.__ffLogoWaiters.push(function() {
-    if (logo.naturalWidth === 0) useEmbedded();
-  });
+  window.__ffLogoWaiters.push(useEmbedded);
 }
 
 function placeCaretEnd(el) {
