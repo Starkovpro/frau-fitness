@@ -194,6 +194,73 @@ function stampDate(html, iso, human) {
   return out;
 }
 
+/* --------------------------------------------------- проверка перед выходом */
+
+/**
+ * Не выпускает статью, если в ней есть то, чего быть не должно.
+ * Любая найденная проблема останавливает публикацию: сайт не меняется,
+ * а в Actions приходит уведомление о неудачном запуске.
+ */
+function validate(html, slug) {
+  const errors = [];
+  const text = html
+    .replace(/<style>[\s\S]*?<\/style>/gi, '')
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<[^>]+>/g, ' ');
+
+  // телефон
+  if (!html.includes('tel:+78512272027')) errors.push('нет корректной ссылки tel:');
+  if (!html.includes('8 (8512) 27-20-27')) errors.push('неверный формат телефона в тексте');
+  if (/\+7\s*\(851\)/.test(html)) errors.push('старый ошибочный формат телефона +7 (851)');
+
+  // дисклеймер: должен быть блок, начинающийся с «Важно:» или «Критически важно:»
+  if (!/<blockquote>\s*<strong>\s*(Критически важно|Важно)\s*:\s*<\/strong>/.test(html)) {
+    errors.push('отсутствует блок-дисклеймер («Важно:» / «Критически важно:»)');
+  } else {
+    // и он должен идти первым блоком в теле статьи, а не в середине текста
+    const body = html.split('<div class="ac">')[1] || '';
+    const firstQuote = body.indexOf('<blockquote>');
+    const firstH2 = body.indexOf('<h2>');
+    if (firstQuote === -1 || (firstH2 !== -1 && firstQuote > firstH2)) {
+      errors.push('дисклеймер не в начале статьи');
+    }
+  }
+
+  // canonical и слаг
+  if (!html.includes(`https://fraufitness.ru/blog/${slug}"`)) {
+    errors.push('canonical не совпадает с именем файла');
+  }
+
+  // заголовок
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (!h1) errors.push('нет H1');
+  else if (/FRAU\s*FITNESS/i.test(h1[1])) errors.push('хвост «FRAU FITNESS» в H1');
+
+  // услуги, которых нет в клубе
+  const absent = [
+    /(?:в|наш\w*)\s+FRAU\s*FITNESS[^.!?]{0,140}(бассейн|аквааэроб|аквафитнес|сауна|хаммам|спа-салон)/i,
+    /(бассейн|аквааэроб|аквафитнес|сауна|хаммам)[^.!?]{0,140}(?:в|наш\w*)\s+FRAU\s*FITNESS/i,
+    /(?:у нас|в клубе)[^.!?]{0,140}(бассейн|аквааэроб|сауна|хаммам)/i
+  ];
+  for (const re of absent) {
+    const hit = text.match(re);
+    if (!hit) continue;
+    // отрицание — это не обещание услуги: «бассейна в клубе нет»
+    const at = hit.index;
+    const around = text.slice(Math.max(0, at - 60), at + hit[0].length + 60);
+    if (/(^|[^а-яё])нет([^а-яё]|$)|отсутству|не располага|не предлага/i.test(around)) continue;
+    errors.push('статья приписывает клубу услугу, которой нет (бассейн/сауна/СПА)');
+    break;
+  }
+
+  // соцсети, которые клуб не ведёт
+  if (/(?:наш|мы|подписывайтесь)[^.!?]{0,80}(instagram|инстаграм)/i.test(text)) {
+    errors.push('упоминание Instagram как канала клуба');
+  }
+
+  return errors;
+}
+
 /* -------------------------------------------------------------- sitemap */
 
 function updateSitemap(slug, iso) {
@@ -264,6 +331,14 @@ function main() {
   const human = displayDate(iso);
 
   let html = fs.readFileSync(srcPath, 'utf8');
+
+  const problems = validate(html, slug);
+  if (problems.length) {
+    console.error(`Статья "${slug}" не прошла проверку — публикация остановлена:`);
+    problems.forEach(p => console.error('  - ' + p));
+    fail('статья не соответствует требованиям, сайт не изменён.');
+  }
+
   const fromHtml = extractMeta(html, slug);
 
   const title = (planned.title || fromHtml.title || slug).trim();
