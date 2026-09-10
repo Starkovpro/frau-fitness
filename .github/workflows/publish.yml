@@ -1,0 +1,65 @@
+name: Публикация статьи блога
+
+on:
+  schedule:
+    # 06:00 и 15:00 UTC = 10:00 и 19:00 по Астрахани (UTC+4)
+    - cron: '0 6 * * *'
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Публикация
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Забрать репозиторий
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Настроить Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Опубликовать следующую статью
+        id: publish
+        run: node .github/scripts/publish.js
+
+      - name: Закоммитить и запушить
+        if: steps.publish.outputs.published == 'true'
+        env:
+          ARTICLE_TITLE: ${{ steps.publish.outputs.title }}
+          ARTICLE_SLUG: ${{ steps.publish.outputs.slug }}
+        run: |
+          set -e
+          git config user.name "FRAU FITNESS Bot"
+          git config user.email "bot@fraufitness.ru"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Изменений нет — коммит не нужен."
+            exit 0
+          fi
+          git commit -m "Блог: $ARTICLE_TITLE" -m "slug: $ARTICLE_SLUG"
+          for i in 1 2 3; do
+            if git push; then
+              echo "Запушено."
+              exit 0
+            fi
+            echo "Push не прошёл, пробую ещё раз ($i)..."
+            git pull --rebase --autostash
+          done
+          echo "Не удалось запушить изменения."
+          exit 1
+
+      - name: Очередь пуста
+        if: steps.publish.outputs.published != 'true'
+        run: echo "Очередь пуста — публиковать нечего."
