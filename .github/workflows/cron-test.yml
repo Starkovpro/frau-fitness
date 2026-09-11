@@ -9,4 +9,5 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - run: date -u '+Сработало по расписанию: %Y-%m-%d %H:%M UTC'
+      - run: |
+          date -u '+Сработало по расписанию: %Y-%m-%d %H:%M UTC'
