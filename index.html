@@ -229,6 +229,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .section-title em { font-style: inherit; color: var(--yellow); }
 .kw { display: inline-block; white-space: nowrap; }
 html, body { overflow-x: clip; }
+#schedule .ffp-time .ffp-t { display: block; line-height: 1.2; }
 @media (max-width: 600px) { .section-title { font-size: 8.4vw; } }
 .tc { display: inline-block; will-change: transform; }
 .lead { color: var(--white-80); font-size: clamp(15px, 1.25vw, 17px); max-width: 60ch; }
@@ -914,6 +915,13 @@ async function initSchedule() {
       const hall = halls[i];
       if (slot && hall && Array.isArray(hall.rows) && hall.rows.length && window.FFPoster) {
         slot.innerHTML = FFPoster.render(hall, json.period || '');
+        // время в две строки: «10.00» и под ним «–10.55» (на узких экранах не обрезается)
+        slot.querySelectorAll('.ffp-time').forEach(td => {
+          const m = td.textContent.trim().match(/^(.+?)\s*[-–—]\s*(.+)$/);
+          if (!m) return;
+          td.textContent = '';
+          [m[1], '–' + m[2]].forEach(t => { const sp = document.createElement('span'); sp.className = 'ffp-t'; sp.textContent = t; td.appendChild(sp); });
+        });
       }
     }
   } catch (e) { /* остаются PNG-картинки как запасной вариант */ }
