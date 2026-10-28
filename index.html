@@ -33,8 +33,8 @@
 <!-- Geo tags для локального SEO -->
 <meta name="geo.region" content="RU-AST">
 <meta name="geo.placename" content="Астрахань">
-<meta name="geo.position" content="46.3497;48.0336">
-<meta name="ICBM" content="46.3497, 48.0336">
+<meta name="geo.position" content="46.347165;48.064661">
+<meta name="ICBM" content="46.347165, 48.064661">
 
 <!-- Favicon (замените на свой файл) -->
 <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon.png">
@@ -225,9 +225,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .section-pad { padding-block: clamp(80px, 13vh, 150px); }
 .section-label { display: inline-flex; align-items: center; gap: 10px; font: 700 11px/1 var(--font); letter-spacing: .3em; text-transform: uppercase; color: var(--yellow); margin-bottom: 18px; }
 .section-label-dot { width: 28px; height: 1px; background: var(--yellow); border-radius: 0; }
-.section-title { font: italic 900 clamp(38px, 6.2vw, 88px)/.92 var(--font-display); text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 22px; text-wrap: balance; }
+.section-title { font: italic 900 clamp(28px, 6.2vw, 88px)/.92 var(--font-display); text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 22px; text-wrap: balance; }
 .section-title em { font-style: inherit; color: var(--yellow); }
 .kw { display: inline-block; white-space: nowrap; }
+html, body { overflow-x: clip; }
+@media (max-width: 600px) { .section-title { font-size: 8.4vw; } }
 .tc { display: inline-block; will-change: transform; }
 .lead { color: var(--white-80); font-size: clamp(15px, 1.25vw, 17px); max-width: 60ch; }
 .panel { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: clamp(24px, 3.2vw, 44px);
@@ -429,6 +431,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .big-tel { font: italic 900 clamp(28px, 3.6vw, 48px)/1 var(--font-display); color: var(--yellow); text-decoration: none; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
 .map-wrap { margin-top: 18px; height: 380px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--glass-border); background: var(--black-card); }
 .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(.2) contrast(1.05); }
+.map-link { display: inline-block; margin-top: 12px; color: var(--yellow, #ffff00); font-weight: 700; font-size: .95rem; text-decoration: none; }
+.map-link:hover { text-decoration: underline; }
 @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } .map-wrap { height: 300px; } }
 
 /* ── Плавающая кнопка (телефон) ── */
@@ -762,8 +766,9 @@ footer { background: rgba(10,10,10,.92); border-top: 1px solid var(--border); pa
       </div>
     </div>
     <div class="map-wrap anim">
-      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afraufitness&source=constructorLink&ll=48.0336%2C46.3497&z=16&pt=48.0336%2C46.3497%2Cpm2ylm" width="100%" height="100%" frameborder="0" loading="lazy" title="Frau Fitness на карте"></iframe>
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=48.064661%2C46.347165&z=17&mode=search&oid=127022560803&ol=biz" width="100%" height="100%" frameborder="0" loading="lazy" title="Frau Fitness на карте"></iframe>
     </div>
+    <a class="map-link" href="https://yandex.ru/maps/org/frau_fitness/127022560803/" target="_blank" rel="noopener noreferrer">📍 Открыть в Яндекс Картах — ул. Ноздрина, 60</a>
   </div>
 </section>
 </main>
