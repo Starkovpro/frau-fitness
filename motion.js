@@ -228,7 +228,8 @@
       };
       return {
         top: [V(0, 0, 7), V(0, 0, 0)],
-        about: [V(4.6, 0.5, 4.4), V(5.6, 0.1, -1)],
+        // логотип целиком в левой половине экрана, рядом с текстом «О клубе»
+        about: (function () { var d = 7.6, ox = L.x + 0.5 * d * Math.tan(cam.fov * Math.PI / 360) * cam.aspect; return [V(ox, L.y, d), V(ox, L.y, 0)]; })(),
         schedule: [V(0.4, 0.3, -4), V(0, 0, -14)],
         pricing: [V(0, 0.2, -9), V(0, 0, -19)],
         gallery: [V(0, 0.2, -14), V(0, 0, -24)],
@@ -290,7 +291,10 @@
       cam.lookAt(curLook);
 
       // логотип: живое вращение + поворот от прокрутки
-      logo.rotation.y = Math.sin(t * 0.35) * 0.6 + window.scrollY * 0.0012;
+      // за прокрутку до «О клубе» логотип делает ровно один оборот и снова смотрит на зрителя
+      var aboutEl = document.getElementById('about');
+      var spin = aboutEl ? Math.max(0, Math.min(1, window.scrollY / Math.max(1, aboutEl.offsetTop - innerHeight * 0.2))) : 0;
+      logo.rotation.y = Math.sin(t * 0.35) * 0.35 + spin * Math.PI * 2;
       logo.rotation.x = Math.sin(t * 0.25) * 0.12;
       logoG.position.y = L.y + Math.sin(t * 0.8) * 0.07;
       ring1.rotation.z = t * 0.2; ring2.rotation.z = -t * 0.12;
