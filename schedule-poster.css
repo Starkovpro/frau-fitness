@@ -5,7 +5,13 @@
    базовый размер шрифта зависит от ширины контейнера (cqw).
    ═══════════════════════════════════════════════════════════════ */
 
-.ffp-scope { width: 100%; }
+.ffp-scope {
+  width: 100%;
+  /* Постер — «картинка» из текста: запрещаем браузерам (Instagram/VK на Android,
+     Samsung Internet) самовольно увеличивать шрифт в ячейках. */
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
 .ffp {
   font-size: 10px;               /* запасной размер для старых браузеров */
   background: #ffffff;
@@ -66,6 +72,7 @@
 }
 .ffp-th-time { width: 13.5%; background: #ffffff !important; }
 .ffp-time {
+  overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700; font-size: 1.12em;
   text-align: center; vertical-align: middle;
