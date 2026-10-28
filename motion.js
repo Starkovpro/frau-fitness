@@ -303,6 +303,9 @@
       U.uScan.value += ((on ? 1 : 0) - U.uScan.value) * 0.08;
       U.uWire.value += ((on ? 1 : 0.3) - U.uWire.value) * 0.06;
       blobG.rotation.y = t * 0.15;
+      // дальние объекты показываем только когда камера рядом (не мелькают на первом экране)
+      blobG.visible = curPos.z < -22;
+      logoEnd.visible = curPos.z < -48;
 
       dust.rotation.y = t * 0.01;
       renderer.render(scene, cam);
